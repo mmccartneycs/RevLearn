@@ -1,0 +1,64 @@
+<!-- Header for the card -->
+<div class="center-content">
+    <mat-card class="example-card">
+        <div class="header">
+        <mat-card-header>
+          <mat-card-title>Welcome!</mat-card-title>
+          <mat-card-subtitle>Login or Register to get started</mat-card-subtitle>
+        </mat-card-header>
+</div>
+
+
+        <mat-card-content>
+            <mat-tab-group>
+                <!-- Login card -->
+                <mat-tab label="Login"> 
+                    <mat-form-field class="example-full-width">
+
+                        <!-- Login Email -->
+                        <mat-label>Email</mat-label>
+                        <input type="email" matInput placeholder="Email">
+                        <mat-icon matSuffix>email</mat-icon>
+                      </mat-form-field>
+                    
+                      <!-- Login Password -->
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Password</mat-label>
+                        <input type="password" matInput placeholder="Password">
+                        <mat-icon matSuffix> vpn_key</mat-icon>
+                      </mat-form-field>
+
+                       <!-- Login Button -->
+                      <button class="mat-button" mat-raised-button color="primary">Log In</button>
+                </mat-tab>
+
+                <!-- Register card -->
+                <mat-tab label="Register"> 
+                    <!-- Register Email -->
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Email</mat-label>
+                        <input type="email" matInput placeholder="Email">
+                        <mat-icon matSuffix>email</mat-icon>
+                      </mat-form-field>
+                    
+                      <!-- Register Password -->
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Password</mat-label>
+                        <input type="password" matInput placeholder="Password">
+                        <mat-icon matSuffix> vpn_key</mat-icon>
+                      </mat-form-field>
+
+                       <!-- Register Confirm Password -->
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Confirm Password</mat-label>
+                        <input type="password" matInput placeholder="Password">
+                        <mat-icon matSuffix> vpn_key</mat-icon>
+                      </mat-form-field>
+
+                      <button class="mat-button" mat-raised-button color="primary">Register</button>
+                </mat-tab>
+              </mat-tab-group>
+        </mat-card-content>
+      </mat-card>
+</div>
+  
