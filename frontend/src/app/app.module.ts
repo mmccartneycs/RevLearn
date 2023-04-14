@@ -2,13 +2,21 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule} from "@angular/common/http";
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 <<<<<<< HEAD
 import { QuizComponent } from './pages/quiz/quiz.component';
 import { QuizListComponent } from './components/quiz-list/quiz-list.component';
 =======
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+//Router 
+import { RouterModule, Routes } from '@angular/router';
+
+//Components
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { CoursesComponent } from './components/courses/courses.component';
+import { GradebookComponent } from './components/gradebook/gradebook.component';
+import { ForumComponent } from './components/forum/forum.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 
 // Angular Material Modules
@@ -24,10 +32,13 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { CoursesComponent } from './components/courses/courses.component';
-import { GradebookComponent } from './components/gradebook/gradebook.component';
-import { ForumComponent } from './components/forum/forum.component';
+
+const routes: Routes = [
+  { path: '', component: HomepageComponent },
+  { path: 'courses', component: CoursesComponent },
+  { path: 'gradebook', component: GradebookComponent },
+  { path: 'forum', component: ForumComponent }
+];
 
 >>>>>>> 1f7b588972b74183151dd966529f654675257842
 
@@ -47,11 +58,16 @@ import { ForumComponent } from './components/forum/forum.component';
   ],
   imports: [
     BrowserModule,
+<<<<<<< HEAD
     AppRoutingModule,
 <<<<<<< HEAD
     HttpClientModule
 =======
+=======
+>>>>>>> 96e9eb55396fb4ba60b5b30054f2e5169effee3c
     BrowserAnimationsModule,
+
+    RouterModule.forRoot(routes),
 
     // Angular Material Imports
     MatCardModule,
@@ -68,6 +84,7 @@ import { ForumComponent } from './components/forum/forum.component';
     MatTabsModule
 >>>>>>> 1f7b588972b74183151dd966529f654675257842
   ],
+  exports: [RouterModule],
   providers: [],
   bootstrap: [AppComponent]
 })
