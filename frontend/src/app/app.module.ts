@@ -3,10 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule} from "@angular/common/http";
 
 import { AppComponent } from './app.component';
-<<<<<<< HEAD
 import { QuizComponent } from './pages/quiz/quiz.component';
 import { QuizListComponent } from './components/quiz-list/quiz-list.component';
-=======
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //Router 
@@ -40,33 +38,21 @@ const routes: Routes = [
   { path: 'forum', component: ForumComponent }
 ];
 
->>>>>>> 1f7b588972b74183151dd966529f654675257842
-
 @NgModule({
   declarations: [
     AppComponent,
-<<<<<<< HEAD
     QuizComponent,
-    QuizListComponent
-=======
+    QuizListComponent,
     HomepageComponent,
     NavbarComponent,
     CoursesComponent,
     GradebookComponent,
     ForumComponent
->>>>>>> 1f7b588972b74183151dd966529f654675257842
   ],
   imports: [
     BrowserModule,
-<<<<<<< HEAD
-    AppRoutingModule,
-<<<<<<< HEAD
-    HttpClientModule
-=======
-=======
->>>>>>> 96e9eb55396fb4ba60b5b30054f2e5169effee3c
+    HttpClientModule,
     BrowserAnimationsModule,
-
     RouterModule.forRoot(routes),
 
     // Angular Material Imports
@@ -82,7 +68,6 @@ const routes: Routes = [
     MatSortModule,
     MatSnackBarModule,
     MatTabsModule
->>>>>>> 1f7b588972b74183151dd966529f654675257842
   ],
   exports: [RouterModule],
   providers: [],

@@ -7,6 +7,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { CoursesComponent } from './components/courses/courses.component';
 import { ForumComponent } from './components/forum/forum.component';
 import { GradebookComponent } from './components/gradebook/gradebook.component';
+import { QuizComponent } from './pages/quiz/quiz.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'courses', component: CoursesComponent },
   { path: 'forum', component: ForumComponent },
   { path: 'gradebook', component: GradebookComponent },
+  { path: 'quiz', component: QuizComponent },
 ];
 
 @NgModule({
