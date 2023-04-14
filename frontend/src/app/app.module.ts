@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule} from "@angular/common/http";
 
 import { AppComponent } from './app.component';
+import { QuizComponent } from './pages/quiz/quiz.component';
+import { QuizListComponent } from './components/quiz-list/quiz-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //Router 
@@ -35,10 +38,11 @@ const routes: Routes = [
   { path: 'forum', component: ForumComponent }
 ];
 
-
 @NgModule({
   declarations: [
     AppComponent,
+    QuizComponent,
+    QuizListComponent,
     HomepageComponent,
     NavbarComponent,
     CoursesComponent,
@@ -47,8 +51,8 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
-
     RouterModule.forRoot(routes),
 
     // Angular Material Imports
