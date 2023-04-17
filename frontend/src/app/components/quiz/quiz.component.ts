@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Quiz } from 'src/app/models/quiz';
 
 @Component({
   selector: 'app-quiz',
@@ -7,6 +8,7 @@ import { Component } from '@angular/core';
 })
 export class QuizComponent {
 
+  @Input()  
   quiz? : Quiz;
 
 }

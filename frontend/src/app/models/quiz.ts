@@ -1,4 +1,4 @@
-interface Quiz {
+export interface Quiz {
     quizId : number
     quizName : string
     answer1 : string

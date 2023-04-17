@@ -1,4 +1,23 @@
-<p>quiz-list works!</p>
-<!-- <div *ngFor="let quiz of this.quizService.quizzes">
-    <app-quiz></app-quiz>
-</div> -->
+<button (click) = 'getAllQuizzes()'>test button will list the questions</button>
+
+<form *ngFor="let quiz of quizzes; let i = index" #myForm="ngForm" (submit)="myAnswer(myForm.value)" (submit)="getQuizById(this.quiz.quizId)" novalidate>
+    <p>Question: {{ i + 1 }}</p>
+    <p>{{quiz.quizName}}</p>
+    <div>
+       <input type="radio" value="a" name="{{ quiz.quizId }}" ngModel>
+       <label>{{ quiz.answer1 }}</label>
+    </div>
+    <div>
+        <input type="radio" value="b" name="{{ quiz.quizId }}" ngModel>
+        <label>{{ quiz.answer2 }}</label>
+    </div>
+    <div>
+        <input type="radio" value="c" name="{{ quiz.quizId }}" ngModel>
+        <label>{{ quiz.answer3 }}</label>
+    </div>
+    <div>
+        <input type="radio" value="d" name="{{ quiz.quizId }}" ngModel>
+        <label>{{ quiz.answer4 }}</label>
+    </div>
+    <button type="submit">Submit</button>
+</form>
