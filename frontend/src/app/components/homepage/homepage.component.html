@@ -17,14 +17,14 @@
 
                         <!-- Login Email -->
                         <mat-label>Email</mat-label>
-                        <input type="email" matInput placeholder="Email">
+                        <input type="email" matInput placeholder="Email" [(ngModel)]="email">
                         <mat-icon matSuffix>email</mat-icon>
                       </mat-form-field>
                     
                       <!-- Login Password -->
                       <mat-form-field class="example-full-width">
                         <mat-label>Password</mat-label>
-                        <input type="password" matInput placeholder="Password">
+                        <input type="password" matInput placeholder="Password" [(ngModel)]="password">
                         <mat-icon matSuffix> vpn_key</mat-icon>
                       </mat-form-field>
 
@@ -34,24 +34,18 @@
 
                 <!-- Register card -->
                 <mat-tab label="Register"> 
+
                     <!-- Register Email -->
                     <mat-form-field class="example-full-width">
                         <mat-label>Email</mat-label>
-                        <input type="email" matInput placeholder="Email">
+                        <input type="email" matInput placeholder="Email" [(ngModel)]="email">
                         <mat-icon matSuffix>email</mat-icon>
                       </mat-form-field>
                     
                       <!-- Register Password -->
                       <mat-form-field class="example-full-width">
                         <mat-label>Password</mat-label>
-                        <input type="password" matInput placeholder="Password">
-                        <mat-icon matSuffix> vpn_key</mat-icon>
-                      </mat-form-field>
-
-                       <!-- Register Confirm Password -->
-                      <mat-form-field class="example-full-width">
-                        <mat-label>Confirm Password</mat-label>
-                        <input type="password" matInput placeholder="Password">
+                        <input type="password" matInput placeholder="Password" [(ngModel)]="password">
                         <mat-icon matSuffix> vpn_key</mat-icon>
                       </mat-form-field>
 
