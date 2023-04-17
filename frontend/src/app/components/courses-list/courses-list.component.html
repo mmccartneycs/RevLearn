@@ -1,0 +1,22 @@
+<section id="list-of-courses">
+    <h3>Course Catalog</h3>
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr class = "course-table-header">
+                <th scope="col">Course Level</th>
+                <th scope="col">Course Name</th>
+                <th scope="col">Department</th>
+                <th scope="col">Instructor</th>
+                <th scope="col">Cost</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let courses of courses">
+            <td class="course_level">{{courses.course_level}}</td>
+            <td class="name">{{courses.name}}</td>
+            <td class="department">{{courses.category}}</td>
+            <td class="cost">{{courses.cost| currency}}</td>
+            </tr>
+        </tbody>
+    </table>
+</section>

@@ -17,6 +17,7 @@ import { GradebookComponent } from './components/gradebook/gradebook.component';
 import { ForumComponent } from './components/forum/forum.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 
+
 // Angular Material Modules
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -31,10 +32,11 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FormsModule } from '@angular/forms';
+import { CoursesListComponent } from './components/courses-list/courses-list.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
-  { path: 'courses', component: CoursesComponent },
+  { path: 'courses', component: CoursesListComponent },
   { path: 'gradebook', component: GradebookComponent },
   { path: 'forum', component: ForumComponent },
   { path: 'quiz', component: QuizComponent }
@@ -49,7 +51,8 @@ const routes: Routes = [
     NavbarComponent,
     CoursesComponent,
     GradebookComponent,
-    ForumComponent
+    ForumComponent,
+    CoursesListComponent
   ],
   imports: [
     BrowserModule,
