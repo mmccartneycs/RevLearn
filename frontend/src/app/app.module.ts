@@ -30,12 +30,14 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'courses', component: CoursesComponent },
   { path: 'gradebook', component: GradebookComponent },
-  { path: 'forum', component: ForumComponent }
+  { path: 'forum', component: ForumComponent },
+  { path: 'quiz', component: QuizComponent }
 ];
 
 @NgModule({
@@ -54,6 +56,7 @@ const routes: Routes = [
     HttpClientModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
+    FormsModule,
 
     // Angular Material Imports
     MatCardModule,
