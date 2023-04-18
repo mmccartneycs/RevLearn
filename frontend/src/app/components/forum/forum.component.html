@@ -1,1 +1,17 @@
-<p>forum works!</p>
+<h2>Forum Posts</h2>
+
+<div *ngFor="let post of forums">
+    <h2>{{ post.textBody }}</h2>
+    <p>Course: {{ post.courseId }}</p>
+    <p>User: {{ post.userId }}</p>
+    <p>Created at: {{ post.createdAt }}</p>
+  </div>
+
+
+
+<form (ngSubmit)="addPost()">
+  <label for="textBody">PlaceHolder:</label>
+  <input type="text" id="textBody" name="textBody" [(ngModel)]="newPost.textBody">
+  <br>
+  <button type="submit">Submit</button>
+</form>
