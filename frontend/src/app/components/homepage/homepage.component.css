@@ -32,3 +32,10 @@
     padding: 16px 16px 0;
     justify-content: space-around;
 }
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
