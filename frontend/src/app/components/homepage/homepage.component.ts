@@ -25,12 +25,16 @@ export class HomepageComponent {
 
   postLogin(): void {
     let account: Account = { email: this.email, password: this.password }
-    this.accountService.postLoginAPI(account).subscribe();
+    this.accountService.postLoginAPI(account).subscribe((acc : Object) => {
+      console.log(acc);
+    });
   }
 
   postRegister(): void {
     let account: Account = { email: this.reg_email, password: this.reg_password }
-    this.accountService.postRegisterAPI(account).subscribe();
+    this.accountService.postRegisterAPI(account).subscribe((acc : Account) => {
+      console.log(acc);
+    });
   }
 
 }
