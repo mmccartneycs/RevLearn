@@ -8,12 +8,14 @@ import { CoursesComponent } from './components/courses/courses.component';
 import { ForumComponent } from './components/forum/forum.component';
 import { GradebookComponent } from './components/gradebook/gradebook.component';
 import { QuizComponent } from './pages/quiz/quiz.component';
+import { CoursesListComponent } from './components/courses-list/courses-list.component';
 
 
 const routes: Routes = [
   { path: '**', component: HomepageComponent },
   { path: 'navbar', component: NavbarComponent },
-  { path: 'courses', component: CoursesComponent },
+  { path: 'courses', component: CoursesListComponent },
+  { path: 'course-selection', component: CoursesComponent},
   { path: 'forum', component: ForumComponent },
   { path: 'gradebook', component: GradebookComponent },
   { path: 'quiz', component: QuizComponent },
