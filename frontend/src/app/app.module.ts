@@ -6,7 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms'
 
 
 import { AppComponent } from './app.component';
-import { QuizComponent } from './pages/quiz/quiz.component';
+import { QuizComponent } from './components/quiz/quiz.component';
 import { QuizListComponent } from './components/quiz-list/quiz-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -40,19 +40,19 @@ const routes: Routes = [
   { path: 'courses', component: CoursesComponent },
   { path: 'gradebook', component: GradebookComponent },
   { path: 'forum', component: ForumComponent },
-  { path: 'quiz', component: QuizComponent }
+  { path: 'quiz', component: QuizListComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    QuizComponent,
     QuizListComponent,
     HomepageComponent,
     NavbarComponent,
     CoursesComponent,
     GradebookComponent,
-    ForumComponent
+    ForumComponent,
+    QuizComponent
   ],
   imports: [
     BrowserModule,
