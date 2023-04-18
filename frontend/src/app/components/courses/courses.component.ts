@@ -6,7 +6,7 @@ import { Courses } from 'src/app/models/courses';
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.css']
 })
-export class CoursesComponent implements OnInit {
+export class CoursesComponent{
   @Input()
    course : Courses = {
      course_id: 0,
@@ -20,9 +20,7 @@ export class CoursesComponent implements OnInit {
    }
  
  
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+ 
 
 }
 

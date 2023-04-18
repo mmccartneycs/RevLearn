@@ -42,5 +42,12 @@ export class CoursesService {
     return this.HttpClient.put(`${this.ev}/courses/update`, this.courses, {headers : header});
   }
 
+  getCourseById(id : number){
+    let header : HttpHeaders = new HttpHeaders();
+    header.append("accept", "text/json");
+    header.append("Access-Control-Allow-Origin", "*");
+    return this.HttpClient.get(`${this.ev}/courses/delete/${id}`, {headers : header}); 
+  }
+
   // have not put the 'findById' in here yet as we may be making customer queries for finding courses by name, keyworks, departments, or instructors. 
 }

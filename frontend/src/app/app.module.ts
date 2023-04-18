@@ -37,6 +37,7 @@ import { CoursesListComponent } from './components/courses-list/courses-list.com
 const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'courses', component: CoursesListComponent },
+  { path: 'course-selection', component: CoursesComponent},
   { path: 'gradebook', component: GradebookComponent },
   { path: 'forum', component: ForumComponent },
   { path: 'quiz', component: QuizComponent }

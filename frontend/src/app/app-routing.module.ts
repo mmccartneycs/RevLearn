@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: '**', component: HomepageComponent },
   { path: 'navbar', component: NavbarComponent },
   { path: 'courses', component: CoursesListComponent },
+  { path: 'course-selection', component: CoursesComponent},
   { path: 'forum', component: ForumComponent },
   { path: 'gradebook', component: GradebookComponent },
   { path: 'quiz', component: QuizComponent },
