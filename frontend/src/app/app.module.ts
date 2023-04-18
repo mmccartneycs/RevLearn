@@ -33,7 +33,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
-import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
