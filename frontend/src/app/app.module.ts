@@ -49,7 +49,7 @@ const routes: Routes = [
     CoursesComponent,
     GradebookComponent,
     ForumComponent,
-    QuizComponent
+    QuizComponent,
   ],
   imports: [
     BrowserModule,
