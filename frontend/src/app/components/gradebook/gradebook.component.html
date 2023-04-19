@@ -1,1 +1,8 @@
-<p>gradebook works!</p>
+<h2>Gradebook</h2>
+
+<div *ngFor="let grade of grades">    
+    <p>Id: {{ grade.Id }}</p>
+    <p>Teacher ID: {{ grade.teacherId }}</p>
+    <p>Student ID: {{ grade.studentId }}</p>
+    <p>Grades: {{ grade.grades }}</p>
+  </div>
