@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { Account } from 'src/app/models/account';
 import { AccountService } from 'src/app/services/account.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -19,7 +20,7 @@ export class HomepageComponent {
   message: string = "";
   messageVisible: boolean = true;
 
-  constructor(private accountService: AccountService, private authService: AuthService) { }
+  constructor(private accountService: AccountService, private authService: AuthService, private router: Router) { }
 
 
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
@@ -33,6 +34,7 @@ export class HomepageComponent {
       (acc: any) => {
         console.log(acc);
         this.authService.isLoggedIn = true;
+        this.router.navigate(['/account']);
       },
       error => {
         if (error.status === 401) {

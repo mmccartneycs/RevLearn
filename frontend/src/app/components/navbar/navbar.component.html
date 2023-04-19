@@ -1,10 +1,12 @@
 <div class="toolbar" role="banner">
-    <a routerLink="/" class="home-button" style="font-size: 1.8em;">RevLearn</a>
+  <a *ngIf="!isLoggedIn; else loggedIn" class="home-button" style="font-size: 1.8em;">RevLearn</a>
+  <ng-template #loggedIn><a routerLink="/account" class="home-button" style="font-size: 1.8em;">RevLearn</a></ng-template>
       <div class="spacer"></div>
       <div *ngIf="isLoggedIn">
       <a routerLink="/courses" class="circle-button" style="font-size: 1em;">courses</a>
       <a routerLink="/quiz" class="circle-button" style="font-size: 1em;">quiz</a>
       <a routerLink="/gradebook" class="circle-button" id ="gradebook" style="font-size: 1em;">gradebook</a>
       <a routerLink="/forum" class="circle-button" id ="forum" style="font-size: 1em;">forum</a>
+      <a routerLink="/account" class="circle-button" id ="account" style="font-size: 1em;">account</a>
     </div>
   </div>
