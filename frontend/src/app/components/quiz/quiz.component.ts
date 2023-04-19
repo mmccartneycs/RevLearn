@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Quiz } from 'src/app/models/quiz';
 import { QuizService } from 'src/app/services/quiz.service';
 
 @Component({
@@ -8,7 +9,9 @@ import { QuizService } from 'src/app/services/quiz.service';
 })
 export class QuizComponent implements OnInit{
 
-    quizzes : any = [];
+    @Input()
+    quizzes: any[] = [];
+
     answer : string = "";
     quiz : any;
     count : number = 0;
@@ -20,12 +23,11 @@ export class QuizComponent implements OnInit{
     }
   
     ngOnInit(): void {
-      this.getAllQuizzes;
     }
   
     getAllQuizzes() {
       this.quizService.getAllQuizzes().subscribe(json => {
-        this.quizzes = json;
+        this.quizzes = json as any[];
         console.log(this.quizzes);
       })
     }

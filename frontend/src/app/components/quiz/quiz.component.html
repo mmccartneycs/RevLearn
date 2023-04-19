@@ -1,23 +1,23 @@
 <button (click) = 'getAllQuizzes()'>test button will list the questions</button>
 
-<form *ngFor="let quiz of quizzes; let i = index" #myForm="ngForm" (submit)="myAnswer(myForm.value)" (submit)="getQuizById(this.quiz.quizId)" novalidate>
+<form *ngFor="let quiz of quizzes; let i = index" #myForm="ngForm" (submit)="myAnswer(myForm.value)" (submit)="getQuizById(quiz.quizId)" novalidate>
     <p>Question: {{ i + 1 }}</p>
     <p>{{ quiz.quizName }}</p>
     <p>{{ quiz.question }}</p>
     <div>
-       <input type="radio" value="a" name="{{ quiz.quizId }}" ngModel>
+       <input type="radio" value="A" name="{{ quiz.quizId }}" ngModel>
        <label>{{ quiz.answer1 }}</label>
     </div>
     <div>
-        <input type="radio" value="b" name="{{ quiz.quizId }}" ngModel>
+        <input type="radio" value="B" name="{{ quiz.quizId }}" ngModel>
         <label>{{ quiz.answer2 }}</label>
     </div>
     <div>
-        <input type="radio" value="c" name="{{ quiz.quizId }}" ngModel>
+        <input type="radio" value="C" name="{{ quiz.quizId }}" ngModel>
         <label>{{ quiz.answer3 }}</label>
     </div>
     <div>
-        <input type="radio" value="d" name="{{ quiz.quizId }}" ngModel>
+        <input type="radio" value="D" name="{{ quiz.quizId }}" ngModel>
         <label>{{ quiz.answer4 }}</label>
     </div>
     <button *ngIf="show" type="submit">Submit</button>
