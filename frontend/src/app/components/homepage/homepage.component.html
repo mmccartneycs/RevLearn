@@ -12,7 +12,7 @@
 
 
         <mat-card-content>
-            <mat-tab-group>
+            <mat-tab-group #tabGroup (selectedTabChange)="messageVisible = tabGroup.selectedIndex === 0">
                 <!-- Login card -->
                 <mat-tab label="Login"> 
                     <mat-form-field class="example-full-width">
@@ -39,7 +39,7 @@
                       </mat-form-field>
 
                        <!-- Login Button -->
-                      <button class="mat-button" mat-raised-button color="primary" (click)="postLogin()">Log In</button>
+                      <button class="mat-button" mat-raised-button color="primary" (click)="postLogin()" [disabled]="!emailFormControl.valid || password.length <=4">Log In</button>
                 </mat-tab>
 
                 <!-- Register card -->
@@ -67,9 +67,10 @@
                         </button>
                       </mat-form-field>
 
-                      <button class="mat-button" mat-raised-button color="primary" (click)="postRegister()">Register</button>
-                </mat-tab>
+                      <button class="mat-button" mat-raised-button color="primary" (click)="postRegister()" [disabled]="!reg_emailFormControl.valid || reg_password.length <=4">Register</button>
+                    </mat-tab>
               </mat-tab-group>
+              <h3 class="message" *ngIf="messageVisible">{{message}}</h3>
         </mat-card-content>
       </mat-card>
 </div>
