@@ -1,32 +1,32 @@
-<p>My Quizzes</p>
-<div *ngFor="let name of quizzesByCourse">
-    <a class="btn" (click)="openMyQuiz(name)">
-        {{ name }}
-    </a>
-    <br>
-    <br>
+<div>
+    <p>My Quizzes</p>
+    <div *ngFor="let name of quizzesByCourse">
+        <a class="btn" (click)="openMyQuiz(name)">
+            {{ name }}
+        </a>
+        <br>
+        <br>
+    </div>
+    <form class="quizList" *ngFor="let quiz of quizByQuizName; let i = index">
+        <p>Question: {{ i + 1 }}</p>
+        <p>{{ quiz.question }}</p>
+        <div>
+           <input type="radio" value="A" name="{{ quiz?.quizId }}" [(ngModel)]="quiz.selectedAnwer" (ngModelChange)="myAnswer($event)">
+           <label>{{ quiz.answer1 }}</label>
+        </div>
+        <div>
+            <input type="radio" value="B" name="{{ quiz?.quizId }}" [(ngModel)]="quiz.selectedAnwer" (ngModelChange)="myAnswer($event)">
+            <label>{{ quiz.answer2 }}</label>
+        </div>
+        <div>
+            <input type="radio" value="C" name="{{ quiz?.quizId }}" [(ngModel)]="quiz.selectedAnwer" (ngModelChange)="myAnswer($event)">
+            <label>{{ quiz.answer3 }}</label>
+        </div>
+        <div>
+            <input type="radio" value="D" name="{{ quiz?.quizId }}" [(ngModel)]="quiz.selectedAnwer" (ngModelChange)="myAnswer($event)">
+            <label>{{ quiz.answer4 }}</label>
+        </div>
+    </form>
+    <button type="submit" (click)="getQuizById(id)">Submit</button>
+    <p> Your Score: {{percent | percent}}</p>
 </div>
-<form *ngFor="let quiz of quizByQuizName; let i = index">
-    <p>Question: {{ i + 1 }}</p>
-    <p>{{ quiz.quizName }}</p>
-    <p>{{ quiz.question }}</p>
-    <div>
-       <input type="radio" value="A" name="{{ quiz?.quizId }}" [(ngModel)]="quiz.selectedAnwer" (ngModelChange)="myAnswer($event)">
-       <label>{{ quiz.answer1 }}</label>
-    </div>
-    <div>
-        <input type="radio" value="B" name="{{ quiz?.quizId }}" [(ngModel)]="quiz.selectedAnwer" (ngModelChange)="myAnswer($event)">
-        <label>{{ quiz.answer2 }}</label>
-    </div>
-    <div>
-        <input type="radio" value="C" name="{{ quiz?.quizId }}" [(ngModel)]="quiz.selectedAnwer" (ngModelChange)="myAnswer($event)">
-        <label>{{ quiz.answer3 }}</label>
-    </div>
-    <div>
-        <input type="radio" value="D" name="{{ quiz?.quizId }}" [(ngModel)]="quiz.selectedAnwer" (ngModelChange)="myAnswer($event)">
-        <label>{{ quiz.answer4 }}</label>
-    </div>
-    <br>
-    <br>
-</form>
-<button type="submit" (click)="getQuizById(id)">Submit</button>

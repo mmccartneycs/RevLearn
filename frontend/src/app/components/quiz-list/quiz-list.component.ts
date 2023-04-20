@@ -14,6 +14,7 @@ export class QuizListComponent implements OnInit {
   id: number = 3; //specfies the courseId. This is hard coded and need to change later.
   quizByQuizName : any;
   quizzes : any[] | undefined;
+  percent : any = 0;
   quiz : Quiz = { 
     quizId: 0,
     quizName: '', 
@@ -38,9 +39,6 @@ export class QuizListComponent implements OnInit {
     this.quizService.getQuizByQuizName(quizName).subscribe(json => {
       this.quizByQuizName = json;
       console.log(this.quizByQuizName);
-      this.quizByQuizName.forEach((quiz: { selectedAnswer: null; }) => {
-        quiz.selectedAnswer = null;
-      })
     })
   }
 
@@ -53,7 +51,6 @@ export class QuizListComponent implements OnInit {
     this.quizService.getQuizById(id).subscribe(json => {
       this.quiz = json as any;
     })
-  // this.quizByQuizName.forEach((quiz: { points: number; }) => quiz.points = 0);
   let totalScore : number = 0;
   let points : number = 1;
   for (let i = 0; i < this.quizByQuizName.length; i++) {
@@ -64,7 +61,9 @@ export class QuizListComponent implements OnInit {
       totalScore += points;
     }
   }
-  console.log(`Total score: ${totalScore}`)
+  let length = this.quizByQuizName.length;
+  this.percent = (totalScore/length).toFixed(2);
+  console.log(`Student scored: ${totalScore} out of ${length} questions which equals to: ${this.percent}%`);
   }
 }
 
