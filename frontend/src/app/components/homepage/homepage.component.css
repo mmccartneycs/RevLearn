@@ -39,3 +39,8 @@
     align-items: center;
     height: 100vh;
 }
+
+.message {
+    padding-top: 10px;
+    color: #D72B2B;
+}

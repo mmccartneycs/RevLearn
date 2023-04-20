@@ -19,6 +19,8 @@ import { CoursesComponent } from './components/courses/courses.component';
 import { GradebookComponent } from './components/gradebook/gradebook.component';
 import { ForumComponent } from './components/forum/forum.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
+import { CoursesListComponent } from './components/courses-list/courses-list.component';
+import { AccountSettingsComponent } from './components/account-settings/account-settings.component';
 
 
 // Angular Material Modules
@@ -34,18 +36,19 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
-
-//import { FormsModule } from '@angular/forms';
-import { CoursesListComponent } from './components/courses-list/courses-list.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDividerModule } from '@angular/material/divider';
 
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'courses', component: CoursesListComponent },
-  { path: 'course-selection', component: CoursesComponent},
+  { path: 'course-selection', component: CoursesComponent },
   { path: 'gradebook', component: GradebookComponent },
   { path: 'forum', component: ForumComponent },
-  { path: 'quiz', component: QuizListComponent }
+  { path: 'quiz', component: QuizListComponent },
+  { path: 'account', component: AccountSettingsComponent }
 ];
 
 @NgModule({
@@ -58,7 +61,8 @@ const routes: Routes = [
     GradebookComponent,
     ForumComponent,
     CoursesListComponent,
-    QuizComponent
+    QuizComponent,
+    AccountSettingsComponent
 
   ],
   imports: [
@@ -82,7 +86,10 @@ const routes: Routes = [
     MatPaginatorModule,
     MatSortModule,
     MatSnackBarModule,
-    MatTabsModule
+    MatTabsModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatDividerModule
   ],
   exports: [RouterModule],
   providers: [],
