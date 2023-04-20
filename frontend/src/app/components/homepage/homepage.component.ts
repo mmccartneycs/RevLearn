@@ -47,6 +47,8 @@ export class HomepageComponent {
     let account: Account = { email: this.reg_email, password: this.reg_password }
     this.accountService.postRegisterAPI(account).subscribe((acc: Account) => {
       console.log(acc);
+      this.authService.isLoggedIn = true;
+      this.router.navigate(['/account']);
     });
   }
 
