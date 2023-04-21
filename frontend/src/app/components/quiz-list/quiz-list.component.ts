@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Quiz } from 'src/app/models/quiz';
+import { AccountService } from 'src/app/services/account.service';
 import { QuizService } from 'src/app/services/quiz.service';
 
 @Component({
@@ -8,29 +9,26 @@ import { QuizService } from 'src/app/services/quiz.service';
   styleUrls: ['./quiz-list.component.css']
 })
 export class QuizListComponent implements OnInit {
-  id : number = 3; //specfies the courseId. This is hard coded and need to change later.
-  coursesByStudentId : any[] = [];
-  quizzesByCourse: string[] = []; //this is iterated on the DOM when the component initializes. 
-  selectedAnswers : string[] = []; // stores the selected answers by the student.
-  quizByQuizName : any;
+  coursesByStudentId : any[] = []; //stores the student's course object.
+  quizzesByCourse: string[] = []; //stores the quiz names from a course.
+  selectedAnswers : string[] = []; //stores the selected answers by the student.
+  quizByQuizName : any; //stores the quiz
   percent : any = 0;
   showQuiz : boolean = false;
   showSubmit : boolean = false;
   buttonsToDisable : any[] = [];
-  quiz : Quiz = { 
-    quizId: 0,
-    quizName: '', 
-    question: '', 
-    answer1: '', 
-    answer2: '', 
-    answer3: '', 
-    answer4: '', 
-    answer: ''
-  };
-  constructor(private quizService: QuizService) {}
 
+  constructor(private quizService: QuizService, private accountService: AccountService) {}
+  
   ngOnInit() {
-    this.quizService.getQuizByCourseId(this.id).subscribe(json => {
+    this.quizService.getCoursesByStudentId(this.accountService.accInfo.id).subscribe(json => {
+      this.coursesByStudentId = json as any [];
+      console.log(this.coursesByStudentId);
+    })
+  }
+     
+  openMyListOfQuiz(id : number) {
+    this.quizService.getQuizByCourseId(id).subscribe(json => {
       this.quizzesByCourse = json as any[];
       console.log(this.quizzesByCourse);
     });
@@ -70,11 +68,5 @@ export class QuizListComponent implements OnInit {
     this.showSubmit = false;
   }
 
-  getCoursesByStudentId(id : number) {
-    this.quizService.getCoursesByStudentId(id).subscribe(json => {
-      this.coursesByStudentId = json as any [];
-      console.log(this.coursesByStudentId);
-    })
-  }
 }
 

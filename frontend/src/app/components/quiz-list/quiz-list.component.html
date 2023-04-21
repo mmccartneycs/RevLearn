@@ -2,15 +2,19 @@
 <mat-toolbar>
 </mat-toolbar>
 <div>
-    <p>My Quizzes</p>
-    <div *ngFor="let name of quizzesByCourse">
+    <h1>My Courses</h1>
+    <div class="btn" *ngFor="let course of coursesByStudentId">
+        <button class="btn" (click)="openMyListOfQuiz(course.course_id)">
+            {{ course.name }}
+        </button>
+    </div>
+    <h3>My Quizzes</h3>
+    <div class="btn" *ngFor="let name of quizzesByCourse">
         <button class="btn" (click)="openMyQuiz(name)" [disabled]="buttonsToDisable.includes(name) ? true : null">
             {{ name }}
         </button>
         <br>
-        <br>
     </div>
-    <button (click)="getCoursesByStudentId(1)">Test</button>
     <div *ngIf="showQuiz">
         <form class="quizList" *ngFor="let quiz of quizByQuizName; let i = index">
             <p>Question: {{ i + 1 }}</p>
