@@ -69,3 +69,7 @@ mat-icon {
     justify-content: center;
     margin-top: 1rem;
 }
+
+.bottom-button {
+    margin: 10px;
+}

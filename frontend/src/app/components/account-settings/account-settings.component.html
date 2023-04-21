@@ -6,7 +6,7 @@
     <mat-sidenav class="sidenav" mode="side" opened>
 
         
-        <h1>Welcome user!</h1>
+        <h1 >Welcome {{firstname}}!</h1>
 
         <mat-divider></mat-divider>
 
@@ -38,38 +38,40 @@
 
                 <mat-form-field class="example-mid-width">
                   <mat-label>First Name</mat-label>
-                  <input matInput placeholder="John" value="{{firstname}}" [(ngModel)]="this.firstname" [ngModelOptions]="{standalone: true}">
+                  <input matInput placeholder="John" value="{{firstname}}" [(ngModel)]="this.firstname" [ngModelOptions]="{standalone: true}" required>
                   <mat-icon matSuffix>mode_edit</mat-icon>
                 </mat-form-field>
 
                 <mat-form-field class="example-mid-width">
                     <mat-label>Last Name</mat-label>
-                    <input matInput placeholder="Doe" value="{{lastname}}" [(ngModel)]="this.lastname" [ngModelOptions]="{standalone: true}">
+                    <input matInput placeholder="Doe" value="{{lastname}}" [(ngModel)]="this.lastname" [ngModelOptions]="{standalone: true}" required>
                     <mat-icon matSuffix>mode_edit</mat-icon>
                 </mat-form-field>
 
                 <mat-form-field class="example-mid-width">
                     <mat-label>Telephone</mat-label>
-                    <input type="tel" matInput placeholder="555-555-1234" value="{{phone_number}}" [(ngModel)]="this.phone_number" [ngModelOptions]="{standalone: true}"> 
+                    <input type="tel" matInput placeholder="555-555-1234" value="{{phone_number}}" [(ngModel)]="this.phone_number" [ngModelOptions]="{standalone: true}" required> 
                     <mat-icon matSuffix>mode_edit</mat-icon>
                 </mat-form-field>
 
                 <mat-form-field class="example-mid-width">
                     <mat-label>Choose a date</mat-label>
-                    <input matInput placeholder="1998-01-01" value="{{dob}}" [(ngModel)]="this.dob" [ngModelOptions]="{standalone: true}">
+                    <input matInput placeholder="1998-01-01" value="{{dob}}" [(ngModel)]="this.dob" [ngModelOptions]="{standalone: true}" required>
                     <mat-icon matSuffix>mode_edit</mat-icon>
                     <mat-hint>MM-DD-YYYY</mat-hint>
                 </mat-form-field>
 
                   <mat-form-field class="example-full-width">
                     <mat-label>Address</mat-label>
-                    <textarea matInput placeholder="Ex. 123 Main St" [(ngModel)]="this.address" [ngModelOptions]="{standalone: true}">{{address}}</textarea>
+                    <textarea matInput placeholder="Ex. 123 Main St" [(ngModel)]="this.address" [ngModelOptions]="{standalone: true}" required>{{address}}</textarea>
                     <mat-icon matSuffix>mode_edit</mat-icon>
                 </mat-form-field>
             </form>
             <div class="button-div">
-            <button class="save" mat-raised-button color="primary" (click)="patchInfo()">Save</button>
+            <button class="bottom-button" mat-raised-button color="primary" (click)="clearFields()">Clear</button>
+            <button class="bottom-button" mat-raised-button color="primary" (click)="patchInfo()" [disabled]="!isValidForm()">Save</button>
             </div>
+            
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>
