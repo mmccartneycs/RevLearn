@@ -15,11 +15,11 @@ import { QuizListComponent } from './components/quiz-list/quiz-list.component';
 const routes: Routes = [
   { path: '**', component: HomepageComponent },
   { path: 'navbar', component: NavbarComponent },
-  { path: 'courses', component: CoursesListComponent },
+  { path: 'catalog', component: CoursesListComponent },
   { path: 'course-selection', component: CoursesComponent },
   { path: 'forum', component: ForumComponent },
   { path: 'gradebook', component: GradebookComponent },
-  { path: 'quiz', component: QuizListComponent },
+  { path: 'mycourses', component: QuizListComponent },
   { path: 'account', component: AccountSettingsComponent }
 ];
 

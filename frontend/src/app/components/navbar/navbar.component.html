@@ -4,10 +4,25 @@
       <div class="spacer"></div>
       
       <div *ngIf="isLoggedIn">
-      <a routerLink="/courses" class="circle-button" style="font-size: 1em;">courses</a>
-      <a routerLink="/quiz" class="circle-button" style="font-size: 1em;">quiz</a>
-      <a routerLink="/gradebook" class="circle-button" id ="gradebook" style="font-size: 1em;">gradebook</a>
-      <a routerLink="/forum" class="circle-button" id ="forum" style="font-size: 1em;">forum</a>
-      <a routerLink="/account" class="circle-button" id ="account" style="font-size: 1em;">account</a>
+        <a routerLink="/catalog" class="circle-button">
+          <mat-icon>menu_book</mat-icon>
+          <span>Catalog</span>
+        </a>
+        <a routerLink="/mycourses" class="circle-button">
+          <mat-icon>book</mat-icon>
+          <span>My Courses</span>
+        </a>
+        <a routerLink="/gradebook" class="circle-button" id ="gradebook">
+          <mat-icon>assessment</mat-icon>
+          <span>Gradebook</span>
+        </a>
+        <a routerLink="/forum" class="circle-button" id ="forum">
+          <mat-icon>forum</mat-icon>
+          <span>Forum</span>
+        </a>
+        <a routerLink="/account" class="circle-button" id ="account">
+          <mat-icon>account_circle</mat-icon>
+          <span>Account</span>
+        </a>
     </div>
   </div>
