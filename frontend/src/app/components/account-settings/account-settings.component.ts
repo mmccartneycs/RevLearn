@@ -34,6 +34,10 @@ export class AccountSettingsComponent implements OnInit {
     this.address = this.userInput.address;
   }
 
+  isValidForm(): boolean {
+    return !!this.firstname && !!this.lastname && !!this.phone_number && !!this.dob && !!this.address;
+  }
+
   onLogout() {
     this.accountService.accInfo = null;
     this.userInput = null;
@@ -51,7 +55,16 @@ export class AccountSettingsComponent implements OnInit {
     let student: Student = { id: this.id, firstname: this.firstname, lastname: this.lastname, address: this.address, phone_number: this.phone_number, dob: this.dob }
     this.accountService.patchInfoAPI(student, this.id).subscribe((info: Student) => {
       console.log(info);
+      this.accountService.accInfo = info;
     });
+  }
+
+  clearFields() {
+    this.firstname = '';
+    this.lastname = '';
+    this.phone_number = '';
+    this.dob = '';
+    this.address = '';
   }
 
 }

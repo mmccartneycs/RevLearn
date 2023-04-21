@@ -69,3 +69,13 @@ mat-icon {
     justify-content: center;
     margin-top: 1rem;
 }
+
+.bottom-button {
+    margin: 10px;
+}
+
+::ng-deep .mat-tooltip {
+    font-size: 14px;
+    color: #fff;
+    background-color: #000;
+}

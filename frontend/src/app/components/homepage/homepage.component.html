@@ -12,7 +12,7 @@
 
 
         <mat-card-content>
-            <mat-tab-group #tabGroup (selectedTabChange)="messageVisible = tabGroup.selectedIndex === 0">
+            <mat-tab-group #tabGroup (selectedTabChange)="messageVisible = tabGroup.selectedIndex === 0; registerVisible = tabGroup.selectedIndex === 1">
                 <!-- Login card -->
                 <mat-tab label="Login"> 
                     <mat-form-field class="example-full-width">
@@ -71,6 +71,7 @@
                     </mat-tab>
               </mat-tab-group>
               <h3 class="message" *ngIf="messageVisible">{{message}}</h3>
+              <h3 class="message" *ngIf="registerVisible">{{reg_message}}</h3>
         </mat-card-content>
       </mat-card>
 </div>
