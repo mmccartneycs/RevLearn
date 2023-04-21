@@ -2,19 +2,21 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Quiz } from 'src/app/models/quiz';
 import { QuizService } from 'src/app/services/quiz.service';
 
-
 @Component({
   selector: 'app-quiz-list',
   templateUrl: './quiz-list.component.html',
   styleUrls: ['./quiz-list.component.css']
 })
 export class QuizListComponent implements OnInit {
+  id : number = 3; //specfies the courseId. This is hard coded and need to change later.
+  coursesByStudentId : any[] = [];
   quizzesByCourse: string[] = []; //this is iterated on the DOM when the component initializes. 
   selectedAnswers : string[] = []; // stores the selected answers by the student.
-  id: number = 3; //specfies the courseId. This is hard coded and need to change later.
   quizByQuizName : any;
-  quizzes : any[] | undefined;
   percent : any = 0;
+  showQuiz : boolean = false;
+  showSubmit : boolean = false;
+  buttonsToDisable : any[] = [];
   quiz : Quiz = { 
     quizId: 0,
     quizName: '', 
@@ -40,30 +42,39 @@ export class QuizListComponent implements OnInit {
       this.quizByQuizName = json;
       console.log(this.quizByQuizName);
     })
+    this.showQuiz = true;
+    this.showSubmit = true;
   }
-
-  myAnswer(answer:string) {
-    this.selectedAnswers.push(answer);
+  
+  myAnswer(index:number, answer:string) {
+    this.selectedAnswers[index] = answer;
     console.log(`Student selected: ${this.selectedAnswers}`);
   }
-
-  getQuizById(id: number) {
-    this.quizService.getQuizById(id).subscribe(json => {
-      this.quiz = json as any;
-    })
-  let totalScore : number = 0;
-  let points : number = 1;
-  for (let i = 0; i < this.quizByQuizName.length; i++) {
-    let quiz = this.quizByQuizName[i];
-    console.log(`The correct answer for quizId: ${quiz.quizId} is: ${quiz.answer}`);
-    console.log(`The student answered: ${this.selectedAnswers[i]}`);
-    if (this.selectedAnswers[i] === quiz.answer) {
-      totalScore += points;
+  
+  submit() {
+    let totalScore : number = 0;
+    let points : number = 1;
+    for (let i = 0; i < this.quizByQuizName.length; i++) {
+      let quiz = this.quizByQuizName[i];
+      this.buttonsToDisable.push(quiz.quizName);
+      console.log(`The correct answer for quizId: ${quiz.quizId} is: ${quiz.answer}`);
+      console.log(`The student answered: ${this.selectedAnswers[i]}`);
+      if (this.selectedAnswers[i] === quiz.answer) {
+        totalScore += points;
+      }
     }
+    let length = this.quizByQuizName.length;
+    this.percent = (totalScore/length * 100).toFixed(2);
+    console.log(`Student scored: ${totalScore} out of ${length} questions which equals to: ${this.percent}`);
+    this.showQuiz = false;
+    this.showSubmit = false;
   }
-  let length = this.quizByQuizName.length;
-  this.percent = (totalScore/length).toFixed(2);
-  console.log(`Student scored: ${totalScore} out of ${length} questions which equals to: ${this.percent}%`);
+
+  getCoursesByStudentId(id : number) {
+    this.quizService.getCoursesByStudentId(id).subscribe(json => {
+      this.coursesByStudentId = json as any [];
+      console.log(this.coursesByStudentId);
+    })
   }
 }
 

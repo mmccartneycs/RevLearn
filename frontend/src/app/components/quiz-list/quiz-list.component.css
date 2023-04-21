@@ -16,7 +16,11 @@
 
 .quizList {
   padding: 1em;
-  background-color: lightgrey;
+  background-color: rgb(235, 225, 225);
   border-radius: 0.5em;
-  margin: 0.25em;
+  margin: 1em;
+}
+
+.quiz {
+  margin: 1em;
 }
