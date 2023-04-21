@@ -1,34 +1,42 @@
+<div class="quiz">
 <mat-toolbar>
 </mat-toolbar>
 <div>
-    <p>My Quizzes</p>
-    <div *ngFor="let name of quizzesByCourse">
-        <a class="btn" (click)="openMyQuiz(name)">
+    <h1>My Courses</h1>
+    <div class="btn" *ngFor="let course of coursesByStudentId">
+        <button class="btn" (click)="openMyListOfQuiz(course.course_id)">
+            {{ course.name }}
+        </button>
+    </div>
+    <h3>My Quizzes</h3>
+    <div class="btn" *ngFor="let name of quizzesByCourse">
+        <button class="btn" (click)="openMyQuiz(name)" [disabled]="buttonsToDisable.includes(name) ? true : null">
             {{ name }}
-        </a>
-        <br>
+        </button>
         <br>
     </div>
-    <form class="quizList" *ngFor="let quiz of quizByQuizName; let i = index">
-        <p>Question: {{ i + 1 }}</p>
-        <p>{{ quiz.question }}</p>
-        <div>
-           <input type="radio" value="A" name="{{ quiz?.quizId }}" [(ngModel)]="quiz.selectedAnwer" (ngModelChange)="myAnswer($event)">
-           <label>{{ quiz.answer1 }}</label>
-        </div>
-        <div>
-            <input type="radio" value="B" name="{{ quiz?.quizId }}" [(ngModel)]="quiz.selectedAnwer" (ngModelChange)="myAnswer($event)">
-            <label>{{ quiz.answer2 }}</label>
-        </div>
-        <div>
-            <input type="radio" value="C" name="{{ quiz?.quizId }}" [(ngModel)]="quiz.selectedAnwer" (ngModelChange)="myAnswer($event)">
-            <label>{{ quiz.answer3 }}</label>
-        </div>
-        <div>
-            <input type="radio" value="D" name="{{ quiz?.quizId }}" [(ngModel)]="quiz.selectedAnwer" (ngModelChange)="myAnswer($event)">
-            <label>{{ quiz.answer4 }}</label>
-        </div>
-    </form>
-    <button type="submit" (click)="getQuizById(id)">Submit</button>
-    <p> Your Score: {{percent | percent}}</p>
+    <div *ngIf="showQuiz">
+        <form class="quizList" *ngFor="let quiz of quizByQuizName; let i = index">
+            <p>Question: {{ i + 1 }}</p>
+            <p>{{ quiz.question }}</p>
+            <div>
+               <input type="radio" value="A" name="{{ quiz?.quizId }}" [(ngModel)]="quiz.selectedAnwer" (ngModelChange)="myAnswer(i, $event)">
+               <label>{{ quiz.answer1 }}</label>
+            </div>
+            <div>
+                <input type="radio" value="B" name="{{ quiz?.quizId }}" [(ngModel)]="quiz.selectedAnwer" (ngModelChange)="myAnswer(i, $event)">
+                <label>{{ quiz.answer2 }}</label>
+            </div>
+            <div>
+                <input type="radio" value="C" name="{{ quiz?.quizId }}" [(ngModel)]="quiz.selectedAnwer" (ngModelChange)="myAnswer(i, $event)">
+                <label>{{ quiz.answer3 }}</label>
+            </div>
+            <div>
+                <input type="radio" value="D" name="{{ quiz?.quizId }}" [(ngModel)]="quiz.selectedAnwer" (ngModelChange)="myAnswer(i, $event)">
+                <label>{{ quiz.answer4 }}</label>
+            </div>
+        </form>
+    </div>
+    <button class="btn" type="submit" (click)="submit()" *ngIf="showSubmit">Submit</button>
+    <p> Your Score: {{percent}}%</p>
 </div>

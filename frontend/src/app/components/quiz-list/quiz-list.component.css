@@ -1,10 +1,16 @@
+div, form {
+  margin: 1em;
+}
+
 .btn {
   display: inline-block;
   padding: 0.5em 1em;
-  background-color: #ccc;
+  background-color: #3F51B5;
   border: none;
   border-radius: 0.25em;
   font-weight: bold;
+  font-size: 1em;
+  color: white;
   text-align: center;
   text-decoration: none;
   transition: background-color 0.2s;
@@ -16,12 +22,23 @@
 
 .quizList {
   padding: 1em;
-  background-color: lightgrey;
+  background-color: rgb(235, 225, 225);
   border-radius: 0.5em;
-  margin: 0.25em;
 }
 
 mat-toolbar {
   background-color: #3F51B5;
   color: white;
+}
+
+.btn-1 {
+  background-color: #f00;
+}
+
+.btn-2 {
+  background-color: #0f0;
+}
+
+.btn-3 {
+  background-color: #00f;
 }
