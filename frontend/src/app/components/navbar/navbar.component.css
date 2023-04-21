@@ -32,3 +32,7 @@
 .circle-button:hover {
     color: #3F51B5;
 }
+
+.active-link {
+    color: #3F51B5;
+}
