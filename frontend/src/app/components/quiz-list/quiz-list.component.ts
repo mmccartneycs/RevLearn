@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Gradebook } from 'src/app/models/gradebook';
 import { Quiz } from 'src/app/models/quiz';
 import { AccountService } from 'src/app/services/account.service';
+import { GradebookService } from 'src/app/services/gradebook.service';
 import { QuizService } from 'src/app/services/quiz.service';
 
 @Component({
@@ -17,8 +19,13 @@ export class QuizListComponent implements OnInit {
   showQuiz : boolean = false;
   showSubmit : boolean = false;
   buttonsToDisable : any[] = [];
+  postedGrade : any;
+  grade : Gradebook = {
+    studentId: this.accountService.accInfo.id,
+    grades: this.percent
+  }
 
-  constructor(private quizService: QuizService, private accountService: AccountService) {}
+  constructor(private quizService: QuizService, private accountService: AccountService, private gradebookService : GradebookService) {}
   
   ngOnInit() {
     this.quizService.getCoursesByStudentId(this.accountService.accInfo.id).subscribe(json => {
@@ -62,11 +69,19 @@ export class QuizListComponent implements OnInit {
       }
     }
     let length = this.quizByQuizName.length;
-    this.percent = (totalScore/length * 100).toFixed(2);
+    this.percent = (totalScore/length * 100)
+    this.grade.grades = this.percent
     console.log(`Student scored: ${totalScore} out of ${length} questions which equals to: ${this.percent}`);
     this.showQuiz = false;
     this.showSubmit = false;
+    this.postGrade();
   }
 
+  postGrade() {
+    this.gradebookService.postGradebookEntry(this.grade).subscribe(json => {
+      this.postedGrade = json;
+      console.log(this.postedGrade);
+    })
+  }
 }
 
