@@ -9,7 +9,7 @@
   text-decoration: none;
   transition: background-color 0.2s;
 }
-  
+
 .btn:hover {
   background-color: #999;
 }
@@ -19,4 +19,9 @@
   background-color: lightgrey;
   border-radius: 0.5em;
   margin: 0.25em;
+}
+
+mat-toolbar {
+  background-color: #3F51B5;
+  color: white;
 }
