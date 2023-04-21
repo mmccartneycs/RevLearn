@@ -20,6 +20,7 @@ export class HomepageComponent {
   message: string = "";
   reg_message: string = "";
   messageVisible: boolean = true;
+  registerVisible: boolean = true;
 
   constructor(private accountService: AccountService, private authService: AuthService, private router: Router) { }
 
