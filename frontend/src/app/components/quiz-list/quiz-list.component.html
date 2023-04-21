@@ -1,4 +1,7 @@
 <div class="quiz">
+<mat-toolbar>
+</mat-toolbar>
+<div>
     <p>My Quizzes</p>
     <div *ngFor="let name of quizzesByCourse">
         <button class="btn" (click)="openMyQuiz(name)" [disabled]="buttonsToDisable.includes(name) ? true : null">
