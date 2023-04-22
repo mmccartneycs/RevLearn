@@ -1,25 +1,34 @@
 <section id="list-of-courses">
     <h3>Course Catalog</h3>
-    <table class="table">
-        <thead>
-            <tr class = "course-table-header">
-                <th scope="col">Course Level</th>
-                <th scope="col">Course Name</th>
-                <th scope="col">Department</th>
-                <th scope="col">Instructor</th>
-                <th scope="col">Cost</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let courses of courses; let indexOfCourse = index;">
-            <td class="course_level">{{courses.course_level}}</td>
-            <td class="name"><a (click)="setCourse(indexOfCourse)">{{courses.name}}</a></td>
-            <td class="department">{{courses.category}}</td>
-            <td class="instructor">{{courses.educator_id}}</td>
-            <td class="cost">{{courses.cost| currency}}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="center-content">
+        <div style="text-align: center; margin: 3% 30%">
+            <div class="searchbar">
+                <div class="bar">
+                <input type="text" placeholder="Search for a course" />
+                </div>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr class = "course-table-header">
+                    <th scope="col">Course Level</th>
+                    <th scope="col">Course Name</th>
+                    <th scope="col">Department</th>
+                    <th scope="col">Cost</th>
+                 </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let courses of courses; let indexOfCourse = index;">
+                <td class="course_level">{{courses.course_level}}</td>
+                <td class="name"><a (click)="setCourse(indexOfCourse)">{{courses.name}}</a></td>
+                <td class="department">{{courses.category}}</td>
+                <td class="cost">{{courses.cost| currency}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </section>
 <br>
 <app-courses [course]="full_course"></app-courses>
+<br>
+<button>Register</button>
