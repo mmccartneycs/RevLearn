@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { Gradebook } from 'src/app/models/gradebook';
 import { AccountService } from 'src/app/services/account.service';
 import { GradebookService } from 'src/app/services/gradebook.service';
@@ -13,6 +13,7 @@ export class GradebookComponent implements OnInit {
   grades: Gradebook[] = [];
   grade: Gradebook;
 
+  
   constructor(private gradebookService: GradebookService, private accountService : AccountService) {
     this.grade = {
       Id: 0,

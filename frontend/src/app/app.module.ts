@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms'
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 
 import { AppComponent } from './app.component';
@@ -42,7 +43,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
-
+import { NgxEditorModule } from 'ngx-editor';
 
 
 const routes: Routes = [
@@ -71,11 +72,14 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    EditorModule,
     HttpClientModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
     FormsModule,
     ReactiveFormsModule,
+    [NgxEditorModule],
+    NgxEditorModule,
 
 
     // Angular Material Imports
