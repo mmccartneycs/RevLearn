@@ -46,13 +46,13 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 const routes: Routes = [
-  { path: '', component: HomepageComponent },
   { path: 'catalog', component: CoursesListComponent },
   { path: 'course-selection', component: CoursesComponent },
   { path: 'gradebook', component: GradebookComponent },
   { path: 'forum', component: ForumComponent },
   { path: 'mycourses', component: QuizListComponent },
-  { path: 'account', component: AccountSettingsComponent }
+  { path: 'account', component: AccountSettingsComponent },
+  { path: '**', component: HomepageComponent }
 ];
 
 @NgModule({

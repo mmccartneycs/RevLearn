@@ -1,7 +1,7 @@
 <mat-toolbar>
+    <h1>My Courses</h1>
 </mat-toolbar>
 <div>
-    <p>My Quizzes</p>
     <div *ngFor="let name of quizzesByCourse">
         <a class="btn" (click)="openMyQuiz(name)">
             {{ name }}

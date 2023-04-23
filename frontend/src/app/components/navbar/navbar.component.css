@@ -36,3 +36,15 @@
 .active-link {
     color: #3F51B5;
 }
+
+.home-button {
+    font-size: 1.8em;
+    color: #3F51B5;
+    text-decoration: none;
+    /* Removes the underline */
+    transition: color 0.5s;
+}
+
+.home-button:hover {
+    color: #f87205;
+}
