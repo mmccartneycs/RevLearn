@@ -52,7 +52,7 @@ const routes: Routes = [
   { path: 'mycourses', component: QuizListComponent },
   { path: 'account', component: AccountSettingsComponent },
   { path: '**', component: HomepageComponent }
-
+]
 
 @NgModule({
   declarations: [
@@ -74,7 +74,6 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     FormsModule,
     ReactiveFormsModule,
-
 
     // Angular Material Imports
     MatCardModule,
