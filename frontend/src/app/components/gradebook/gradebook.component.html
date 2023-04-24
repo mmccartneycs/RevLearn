@@ -3,7 +3,11 @@
 <h2>Gradebook</h2>
 <p>TODO: write backend join query to get assignment names</p>
 
-<table>
+<div *ngFor="let course of coursesStudent">
+  <button (click)="selectedCourseId = course.id">{{ course.name }}</button>
+</div>
+
+<table *ngIf="selectedCourseId">
   <thead>
     <tr>
       <th class="Id">Id</th>
@@ -12,8 +16,15 @@
   </thead>
   <tbody>
     <tr *ngFor="let grade of grades">
-      <td>{{ grade.Id }}</td>
-      <td class="grades">{{ grade.grades }}</td>
+      <ng-container *ngIf="grade.courseId === selectedCourseId">
+        <td>{{ grade.Id }}</td>
+        <td>
+          <ng-container *ngFor="let quiz of quizes">
+            <div *ngIf="quiz.quizId === grade.quizId">{{ quiz.quizName }}</div>
+            <td class="grades">{{ grade.grades }}</td>
+          </ng-container>
+        </td>
+      </ng-container>
     </tr>
   </tbody>
 </table>
