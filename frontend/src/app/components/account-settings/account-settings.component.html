@@ -1,12 +1,13 @@
 <mat-toolbar>
-    Welcome to Revlearn! 
+    Welcome to your account
 </mat-toolbar>
+
 
 <mat-sidenav-container>
     <mat-sidenav class="sidenav" mode="side" opened>
 
         
-        <h1 >Welcome {{firstname}}!</h1>
+        <h1 >Welcome {{firstname}}</h1>
 
         <mat-divider></mat-divider>
 
@@ -71,7 +72,7 @@
             </form>
             <div class="button-div">
             <button class="bottom-button" mat-raised-button color="primary" (click)="clearFields()">Clear</button>
-           <div [matTooltip]="isValidForm() ? '' : 'All fields must be filled before saving.'" [matTooltipDisabled]="isValidForm()">
+           <div [matTooltip]="isValidForm() ? '' : 'All fields must be complete before saving.'" [matTooltipDisabled]="isValidForm()">
             <button class="bottom-button" mat-raised-button color="primary" (click)="patchInfo()" [disabled]="!isValidForm()">Save</button>
             </div>  
         </div>

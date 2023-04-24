@@ -55,14 +55,13 @@ export class HomepageComponent {
     this.accountService.postRegisterAPI(account).subscribe((acc: Account) => {
       console.log(acc);
       this.accountService.accInfo = acc;
-      this.authService.isLoggedIn = true;
-      this.router.navigate(['/account']);
     },
       error => {
         if (error.status === 401) {
           this.reg_message = "User associated with email already exists. Please Login or select Forgot Password."
         }
       });
+
   }
 
 }

@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Gradebook } from 'src/app/models/gradebook';
-import { Quiz } from 'src/app/models/quiz';
 import { AccountService } from 'src/app/services/account.service';
 import { GradebookService } from 'src/app/services/gradebook.service';
 import { QuizService } from 'src/app/services/quiz.service';
@@ -20,6 +19,7 @@ export class QuizListComponent implements OnInit {
   showSubmit : boolean = false;
   buttonsToDisable : any[] = [];
   postedGrade : any;
+  timeRemaining: number = 15;
   grade : Gradebook = {
     studentId: this.accountService.accInfo.id,
     grades: this.percent
@@ -75,6 +75,7 @@ export class QuizListComponent implements OnInit {
     this.showQuiz = false;
     this.showSubmit = false;
     this.postGrade();
+    alert("Your grade has been posted!")
   }
 
   postGrade() {
@@ -83,5 +84,16 @@ export class QuizListComponent implements OnInit {
       console.log(this.postedGrade);
     })
   }
+
+  timer() {
+    setInterval(() => {
+      this.timeRemaining--;
+      if (this.timeRemaining === 0) {
+        alert("Time's up!")
+        this.submit();
+      }
+    }, 1000);
+  }
+  
 }
 
