@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Account } from 'src/app/models/account';
 import { AccountService } from 'src/app/services/account.service';
@@ -31,6 +31,10 @@ export class HomepageComponent {
 
   hide = true;
 
+  ngOnInit() {
+    var localStorage = window.localStorage;
+  }
+  
   postLogin(): void {
     let account: Account = { email: this.email, password: this.password }
     this.accountService.postLoginAPI(account).subscribe(
@@ -53,12 +57,14 @@ export class HomepageComponent {
       console.log(acc);
       this.accountService.accInfo = acc;
       this.reg_verification = "Registration was successful! Please check verification email."
+
     },
       error => {
         if (error.status === 401) {
           this.reg_message = "User associated with email already exists. Please Login or select Forgot Password."
         }
       });
+
   }
 
 }

@@ -39,8 +39,9 @@ export class AccountSettingsComponent implements OnInit {
     this.phone_number = this.userInput.phone_number;
     this.dob = this.userInput.dob;
     this.address = this.userInput.address;
+    localStorage.setItem("userId", this.id.toString());
   }
-
+  
   isValidForm(): boolean {
     return !!this.firstname && !!this.lastname && !!this.phone_number && !!this.dob && !!this.address;
   }

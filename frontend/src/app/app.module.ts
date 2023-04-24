@@ -4,7 +4,6 @@ import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms'
 import { AppComponent } from './app.component';
-import { QuizComponent } from './components/quiz/quiz.component';
 import { QuizListComponent } from './components/quiz-list/quiz-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -40,7 +39,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
-
+import { NgxEditorModule } from 'ngx-editor';
 
 
 const routes: Routes = [
@@ -51,7 +50,6 @@ const routes: Routes = [
   { path: 'gradebook', component: GradebookComponent },
   { path: 'forum', component: ForumComponent },
   { path: 'mycourses', component: QuizListComponent },
-  { path: 'account', component: AccountSettingsComponent },
   { path: '**', component: HomepageComponent }]
 
 
@@ -65,7 +63,6 @@ const routes: Routes = [
     GradebookComponent,
     ForumComponent,
     CoursesListComponent,
-    QuizComponent,
     AccountSettingsComponent
 
   ],
@@ -76,7 +73,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     FormsModule,
     ReactiveFormsModule,
-
+    [NgxEditorModule],
+    NgxEditorModule,
 
     // Angular Material Imports
     MatCardModule,

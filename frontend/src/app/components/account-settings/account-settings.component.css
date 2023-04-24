@@ -23,8 +23,9 @@ mat-sidenav {
     height: calc(100vh - 98px);
     margin: 16px;
     margin-left: 32px;
-    font-size: 2rem;
-    color: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 10px;
 }
 
