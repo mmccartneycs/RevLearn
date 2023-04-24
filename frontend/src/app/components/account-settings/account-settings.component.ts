@@ -12,7 +12,11 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class AccountSettingsComponent implements OnInit {
 
-  constructor(private router: Router, private authService: AuthService, private accountService: AccountService) { }
+  constructor(private router: Router, private authService: AuthService, private accountService: AccountService) {
+    setTimeout(() => {
+      this.showMessage = false;
+    }, 15000)
+  }
 
   userInput: any = this.accountService.accInfo;
 
@@ -23,6 +27,9 @@ export class AccountSettingsComponent implements OnInit {
   phone_number: string = "";
   dob: string = "";
   address: string = "";
+
+  showMessage = true;
+  message: string = "";
 
 
   ngOnInit() {
@@ -57,6 +64,7 @@ export class AccountSettingsComponent implements OnInit {
     this.accountService.patchInfoAPI(student, this.id).subscribe((info: Student) => {
       console.log(info);
       this.accountService.accInfo = info;
+      this.message = "Account information updated!"
     });
   }
 

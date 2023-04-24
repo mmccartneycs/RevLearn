@@ -76,6 +76,7 @@
             <button class="bottom-button" mat-raised-button color="primary" (click)="patchInfo()" [disabled]="!isValidForm()">Save</button>
             </div>  
         </div>
+        <h3 class="message" *ngIf="showMessage">{{message}}</h3>
             
         </div>
     </mat-sidenav-content>

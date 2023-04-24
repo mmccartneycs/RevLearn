@@ -50,9 +50,8 @@ const routes: Routes = [
   { path: 'gradebook', component: GradebookComponent },
   { path: 'forum', component: ForumComponent },
   { path: 'mycourses', component: QuizListComponent },
-  { path: 'account', component: AccountSettingsComponent },
-  { path: '**', component: HomepageComponent }
-]
+  { path: '**', component: HomepageComponent }]
+
 
 @NgModule({
   declarations: [
