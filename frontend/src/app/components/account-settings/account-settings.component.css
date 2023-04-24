@@ -1,6 +1,11 @@
 mat-toolbar {
     background-color: #3F51B5;
     color: white;
+    align-items: end;
+}
+
+mat-toolbar h1 {
+    margin-left: 58px;
 }
 
 mat-sidenav {
@@ -9,7 +14,7 @@ mat-sidenav {
     border-right: none;
     background: #3F51B5;
     color: white;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 16px;
     text-align: center;
 }
@@ -38,4 +43,45 @@ mat-sidenav-container {
 
 mat-icon {
     margin-right: 8px;
+}
+
+.example-form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.example-mid-width {
+    width: 40%;
+    margin-top: 2rem;
+    margin-left: 2%;
+}
+
+.example-full-width {
+    width: 82%;
+    margin-left: 2%;
+    margin-top: 2rem;
+}
+
+.id {
+    width: 20%;
+    margin-top: 2rem;
+    margin-left: 2%;
+}
+
+.button-div {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.bottom-button {
+    margin: 10px;
+}
+
+::ng-deep .mat-tooltip {
+    font-size: 14px;
+    color: #fff;
+    background-color: #000;
 }

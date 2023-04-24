@@ -1,0 +1,24 @@
+div, form {
+  margin: 1em;
+}
+
+.btn {
+  display: inline-block;
+}
+
+.quizList {
+  padding: 1em;
+  background-color: rgb(235, 225, 225);
+  border-radius: 0.5em;
+}
+
+mat-toolbar {
+  background-color: #3F51B5;
+  color: white;
+  align-items: end;
+}
+
+mat-toolbar h1 {
+  margin-left: 58px;
+
+}

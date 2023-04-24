@@ -17,3 +17,34 @@
 .toolbar a {
     margin: 25px;
 }
+
+.circle-button {
+    color: darkgray;
+    text-decoration: none;
+    font-size: 1em;
+    padding: 1em;
+    transition: color 0.3s;
+    justify-content: space-evenly;
+    display: inline-flex;
+    align-items: center;
+}
+
+.circle-button:hover {
+    color: #3F51B5;
+}
+
+.active-link {
+    color: #3F51B5;
+}
+
+.home-button {
+    font-size: 1.8em;
+    color: #3F51B5;
+    text-decoration: none;
+    /* Removes the underline */
+    transition: color 0.5s;
+}
+
+.home-button:hover {
+    color: #f87205;
+}

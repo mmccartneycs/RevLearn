@@ -3,10 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms'
-
-
 import { AppComponent } from './app.component';
-import { QuizComponent } from './components/quiz/quiz.component';
 import { QuizListComponent } from './components/quiz-list/quiz-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -39,17 +36,23 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 
 
 const routes: Routes = [
+
   { path: '', component: HomepageComponent },
-  { path: 'courses', component: CoursesListComponent },
+  { path: 'catalog', component: CoursesListComponent },
   { path: 'course-selection', component: CoursesComponent },
   { path: 'gradebook', component: GradebookComponent },
   { path: 'forum', component: ForumComponent },
-  { path: 'quiz', component: QuizListComponent },
-  { path: 'account', component: AccountSettingsComponent }
-];
+  { path: 'mycourses', component: QuizListComponent },
+  { path: 'account', component: AccountSettingsComponent },
+  { path: '**', component: HomepageComponent }
+]
 
 @NgModule({
   declarations: [
@@ -61,7 +64,6 @@ const routes: Routes = [
     GradebookComponent,
     ForumComponent,
     CoursesListComponent,
-    QuizComponent,
     AccountSettingsComponent
 
   ],
@@ -72,7 +74,6 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     FormsModule,
     ReactiveFormsModule,
-
 
     // Angular Material Imports
     MatCardModule,
@@ -89,7 +90,10 @@ const routes: Routes = [
     MatTabsModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatDividerModule
+    MatDividerModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTooltipModule
   ],
   exports: [RouterModule],
   providers: [],

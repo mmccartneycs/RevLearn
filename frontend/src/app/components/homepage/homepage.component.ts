@@ -18,7 +18,9 @@ export class HomepageComponent {
   reg_password: string = ""
 
   message: string = "";
+  reg_message: string = "";
   messageVisible: boolean = true;
+  registerVisible: boolean = true;
 
   constructor(private accountService: AccountService, private authService: AuthService, private router: Router) { }
 
@@ -33,6 +35,7 @@ export class HomepageComponent {
     this.accountService.postLoginAPI(account).subscribe(
       (acc: any) => {
         console.log(acc);
+        this.accountService.accInfo = acc;
         this.authService.isLoggedIn = true;
         this.router.navigate(['/account']);
       },
@@ -47,8 +50,14 @@ export class HomepageComponent {
     let account: Account = { email: this.reg_email, password: this.reg_password }
     this.accountService.postRegisterAPI(account).subscribe((acc: Account) => {
       console.log(acc);
-      this.router.navigate(['/account']);
-    });
+      this.accountService.accInfo = acc;
+    },
+      error => {
+        if (error.status === 401) {
+          this.reg_message = "User associated with email already exists. Please Login or select Forgot Password."
+        }
+      });
+
   }
 
 }

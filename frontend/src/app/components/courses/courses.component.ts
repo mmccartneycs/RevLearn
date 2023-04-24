@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Courses } from 'src/app/models/courses';
+import { AccountService } from 'src/app/services/account.service';
+import { CoursesService } from 'src/app/services/courses.service';
 
 @Component({
   selector: 'app-courses',
@@ -17,6 +19,18 @@ export class CoursesComponent{
      course_level: 0,
      description: '',
      cost: 0
+   }
+   registeredCourse : any;
+
+   constructor(private coursesService : CoursesService, private accountService : AccountService) {}
+
+   sid : number = this.accountService.accInfo.id;
+
+   registerCourse(sid : number, cid : number) {
+    this.coursesService.registerCourse(sid, cid).subscribe(json => {
+      this.registeredCourse = json;
+      console.log(this.registeredCourse)
+    });
    }
  
  
