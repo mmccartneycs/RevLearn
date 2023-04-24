@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Account } from 'src/app/models/account';
 import { Student } from 'src/app/models/student';
 import { AccountService } from 'src/app/services/account.service';
 import { AuthService } from 'src/app/services/auth.service';
@@ -12,13 +14,11 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class AccountSettingsComponent implements OnInit {
 
-  constructor(private router: Router, private authService: AuthService, private accountService: AccountService) {
-    setTimeout(() => {
-      this.showMessage = false;
-    }, 15000)
-  }
+  constructor(private router: Router, private authService: AuthService, private accountService: AccountService) { }
 
   userInput: any = this.accountService.accInfo;
+  loginEmail: string = this.accountService.loginEmail;
+  loginPassword: string = this.accountService.loginPassword;
 
 
   id: number = 0;
@@ -29,10 +29,19 @@ export class AccountSettingsComponent implements OnInit {
   address: string = "";
 
   showMessage = true;
-  message: string = "";
+  message: string | null = null;
+
+  hide = true;
+
+  email: string = ""
+  password: string = ""
+
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
 
   ngOnInit() {
+    this.email = this.loginEmail;
+    this.password = this.loginPassword;
     this.id = this.userInput.id;
     this.firstname = this.userInput.firstname;
     this.lastname = this.userInput.lastname;
@@ -41,7 +50,7 @@ export class AccountSettingsComponent implements OnInit {
     this.address = this.userInput.address;
     localStorage.setItem("userId", this.id.toString());
   }
-  
+
   isValidForm(): boolean {
     return !!this.firstname && !!this.lastname && !!this.phone_number && !!this.dob && !!this.address;
   }
@@ -60,11 +69,23 @@ export class AccountSettingsComponent implements OnInit {
   }
 
   patchInfo() {
+    let account: Account = { email: this.email, password: this.password }
+    this.accountService.patchCredentialsAPI(account, this.id).subscribe((credentials: Account) => {
+      console.log(credentials);
+      this.message = "Account information updated!"
+      setTimeout(() => {
+        this.message = null;
+      }, 15000)
+    });
+
     let student: Student = { id: this.id, firstname: this.firstname, lastname: this.lastname, address: this.address, phone_number: this.phone_number, dob: this.dob }
     this.accountService.patchInfoAPI(student, this.id).subscribe((info: Student) => {
       console.log(info);
       this.accountService.accInfo = info;
       this.message = "Account information updated!"
+      setTimeout(() => {
+        this.message = null;
+      }, 15000)
     });
   }
 

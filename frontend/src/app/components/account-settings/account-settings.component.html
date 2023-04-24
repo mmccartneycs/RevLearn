@@ -37,7 +37,27 @@
                   <mat-label>ID</mat-label>
                   <input matInput disabled value="{{id}}">
                 </mat-form-field>
-            </div>
+                </div>
+
+                <mat-form-field class="example-mid-width">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput placeholder="Email" [formControl]="emailFormControl" [(ngModel)]="email" required>
+                    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                      Please enter a valid email address
+                    </mat-error>
+                    <mat-error *ngIf="emailFormControl.hasError('required')">
+                      Email is <strong>required</strong>
+                    </mat-error>
+                    <mat-icon matSuffix>email</mat-icon>
+                  </mat-form-field>
+
+                <mat-form-field class="example-mid-width">
+                    <mat-label>Reset password</mat-label>
+                    <input [type]="hide ? 'password' : 'text'" matInput placeholder="Password" minlength="4" [(ngModel)]="password" required>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                  </mat-form-field>
 
                 <mat-form-field class="example-mid-width">
                   <mat-label>First Name</mat-label>

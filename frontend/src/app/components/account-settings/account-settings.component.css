@@ -27,6 +27,7 @@ mat-sidenav {
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+    flex-direction: column;
 }
 
 mat-sidenav-container {
