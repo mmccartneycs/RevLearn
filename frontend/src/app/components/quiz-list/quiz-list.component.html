@@ -1,7 +1,9 @@
 <div class="quiz">
 <mat-toolbar>
+    <h1>My Courses</h1>
 </mat-toolbar>
 <div>
+
     <h1>My Courses</h1>
     <div class="btn" *ngFor="let course of coursesByStudentId">
         <button mat-raised-button color="primary" (click)="openMyListOfQuiz(course.course_id)">
