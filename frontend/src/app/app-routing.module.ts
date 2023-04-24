@@ -7,18 +7,20 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { CoursesComponent } from './components/courses/courses.component';
 import { ForumComponent } from './components/forum/forum.component';
 import { GradebookComponent } from './components/gradebook/gradebook.component';
-import { QuizComponent } from './pages/quiz/quiz.component';
 import { CoursesListComponent } from './components/courses-list/courses-list.component';
+import { AccountSettingsComponent } from './components/account-settings/account-settings.component';
+import { QuizListComponent } from './components/quiz-list/quiz-list.component';
 
 
 const routes: Routes = [
   { path: '**', component: HomepageComponent },
   { path: 'navbar', component: NavbarComponent },
-  { path: 'courses', component: CoursesListComponent },
-  { path: 'course-selection', component: CoursesComponent},
+  { path: 'catalog', component: CoursesListComponent },
+  { path: 'course-selection', component: CoursesComponent },
   { path: 'forum', component: ForumComponent },
   { path: 'gradebook', component: GradebookComponent },
-  { path: 'quiz', component: QuizComponent },
+  { path: 'mycourses', component: QuizListComponent },
+  { path: 'account', component: AccountSettingsComponent }
 ];
 
 @NgModule({

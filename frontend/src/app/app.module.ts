@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule} from "@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms'
+
 
 import { AppComponent } from './app.component';
-import { QuizComponent } from './pages/quiz/quiz.component';
+import { QuizComponent } from './components/quiz/quiz.component';
 import { QuizListComponent } from './components/quiz-list/quiz-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -16,6 +19,8 @@ import { CoursesComponent } from './components/courses/courses.component';
 import { GradebookComponent } from './components/gradebook/gradebook.component';
 import { ForumComponent } from './components/forum/forum.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
+import { CoursesListComponent } from './components/courses-list/courses-list.component';
+import { AccountSettingsComponent } from './components/account-settings/account-settings.component';
 
 
 // Angular Material Modules
@@ -31,29 +36,40 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
-import { FormsModule } from '@angular/forms';
-import { CoursesListComponent } from './components/courses-list/courses-list.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { SearchComponent } from './components/search/search.component';
+
+
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
-  { path: 'courses', component: CoursesListComponent },
-  { path: 'course-selection', component: CoursesComponent},
+  { path: 'catalog', component: CoursesListComponent },
+  { path: 'course-selection', component: CoursesComponent },
   { path: 'gradebook', component: GradebookComponent },
   { path: 'forum', component: ForumComponent },
-  { path: 'quiz', component: QuizComponent }
+  { path: 'mycourses', component: QuizListComponent },
+  { path: 'account', component: AccountSettingsComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    QuizComponent,
     QuizListComponent,
     HomepageComponent,
     NavbarComponent,
     CoursesComponent,
     GradebookComponent,
     ForumComponent,
-    CoursesListComponent
+    CoursesListComponent,
+    QuizComponent,
+    AccountSettingsComponent,
+    SearchComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -61,6 +77,8 @@ const routes: Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
     FormsModule,
+    ReactiveFormsModule,
+
 
     // Angular Material Imports
     MatCardModule,
@@ -74,7 +92,14 @@ const routes: Routes = [
     MatPaginatorModule,
     MatSortModule,
     MatSnackBarModule,
-    MatTabsModule
+    MatTabsModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatDividerModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTooltipModule,
+    
   ],
   exports: [RouterModule],
   providers: [],

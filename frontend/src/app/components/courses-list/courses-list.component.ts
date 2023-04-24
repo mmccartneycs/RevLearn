@@ -1,4 +1,7 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { NgModel } from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
 import { Courses } from 'src/app/models/courses';
 import { CoursesService } from 'src/app/services/courses.service';
 
@@ -10,6 +13,10 @@ import { CoursesService } from 'src/app/services/courses.service';
 export class CoursesListComponent implements OnInit{
 
   courses: any;
+  searchText: string = '';
+  columnsToDisplay: string [] = ['courseLevel', 'courseName', 'department', 'cost', 'details'];
+  dataSource = new MatTableDataSource<Courses>();
+  
 
   full_course: Courses = {
     course_id: 0,
@@ -28,14 +35,19 @@ export class CoursesListComponent implements OnInit{
     this.refresh();
   }
   refresh() : void {
-    this.coursesService.getAllCourses().subscribe(json => {this.courses =json; console.log(this.courses);});    
+    this.coursesService.getAllCourses().subscribe(json => {this.courses =json; this.dataSource.data = this.courses; console.log(this.courses);});
+
     
   }
   setCourse(id : number ) : void {
     this.full_course=this.courses[id];
     console.log(this.full_course);
   }
-
+     
+  onSearchTextEntered(searchValue: string){ 
+      this.searchText = searchValue;
+      console.log(this.searchText);
+   }  
 }
 
 

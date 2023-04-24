@@ -1,0 +1,81 @@
+mat-toolbar {
+    background-color: #3F51B5;
+    color: white;
+}
+
+mat-sidenav {
+    margin: 16px;
+    width: 200px;
+    border-right: none;
+    background: #3F51B5;
+    color: white;
+    border-radius: 5px;
+    padding: 16px;
+    text-align: center;
+}
+
+.content {
+    height: calc(100vh - 98px);
+    margin: 16px;
+    margin-left: 32px;
+    font-size: 2rem;
+    color: lightgray;
+    border-radius: 10px;
+}
+
+mat-sidenav-container {
+    height: calc(100vh - 65px);
+}
+
+.menu-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1rem;
+}
+
+mat-icon {
+    margin-right: 8px;
+}
+
+.example-form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.example-mid-width {
+    width: 40%;
+    margin-top: 2rem;
+    margin-left: 2%;
+}
+
+.example-full-width {
+    width: 82%;
+    margin-left: 2%;
+    margin-top: 2rem;
+}
+
+.id {
+    width: 20%;
+    margin-top: 2rem;
+    margin-left: 2%;
+}
+
+.button-div {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.bottom-button {
+    margin: 10px;
+}
+
+::ng-deep .mat-tooltip {
+    font-size: 14px;
+    color: #fff;
+    background-color: #000;
+}

@@ -1,34 +1,38 @@
-<section id="list-of-courses">
-    <h3>Course Catalog</h3>
-    <div class="center-content">
-        <div style="text-align: center; margin: 3% 30%">
-            <div class="searchbar">
-                <div class="bar">
-                <input type="text" placeholder="Search for a course" />
-                </div>
-            </div>
-        </div>
-        <table class="table">
+<mat-toolbar></mat-toolbar>
+<br>
+<div class="center">
+    <div class="header-main"> 
+        <h2>Course Catalog</h2>
+        <app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
+    </div>  
+    <br>
+    <section class="wrapper-main">
+        <table *ngIf="searchText ===''|| (courses.name.toLowerCase().includes(searchText) || courses.keywords.toLowerCase().includes(searchText))" >
             <thead>
-                <tr class = "course-table-header">
+                <tr>
                     <th scope="col">Course Level</th>
                     <th scope="col">Course Name</th>
                     <th scope="col">Department</th>
                     <th scope="col">Cost</th>
-                 </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let courses of courses; let indexOfCourse = index;">
-                <td class="course_level">{{courses.course_level}}</td>
-                <td class="name"><a (click)="setCourse(indexOfCourse)">{{courses.name}}</a></td>
-                <td class="department">{{courses.category}}</td>
-                <td class="cost">{{courses.cost| currency}}</td>
+                    <th scope="col">Details</th>
                 </tr>
+            </thead>
+            <tbody>                
+                    <tr *ngFor="let courses of courses; let indexOfCourse = index;">                  
+                        <td>{{courses.course_level}}</td>
+                        <td>{{courses.name}}</td>                        
+                        <td>{{courses.category}}</td>
+                        <td>{{courses.cost| currency}}</td>
+                        <td><button class="btn brn-sm btn-blue" (click)="setCourse(indexOfCourse)">Details</button> </td>              
+                    </tr>
             </tbody>
         </table>
-    </div>
-</section>
+    </section>     
+</div>
 <br>
-<app-courses [course]="full_course"></app-courses>
+<div class="registration">
+    <app-courses [course]="full_course"></app-courses>
+</div>
+
 <br>
-<button>Register</button>
+
