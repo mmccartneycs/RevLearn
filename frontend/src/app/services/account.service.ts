@@ -17,6 +17,9 @@ export class AccountService {
 
   accInfo: any
 
+  loginEmail: string = ""
+  loginPassword: string = ""
+
 
   postLoginAPI(account: Account) {
     let header: HttpHeaders = new HttpHeaders();
@@ -39,4 +42,19 @@ export class AccountService {
     console.log(student);
     return this.http.patch<Student>(`${this.ev}/student/${id}`, { firstname: student.firstname, lastname: student.lastname, address: student.address, phone_number: student.phone_number, dob: student.dob }, { headers: header });
   }
+
+  postPasswordAPI(account: Account) {
+    let header: HttpHeaders = new HttpHeaders();
+    header.append("accept", "text/json");
+    header.append("Access-Control-Allow-Origin", "*");
+    return this.http.post<Account>(`${this.ev}/password`, account, { headers: header });
+  }
+
+  patchCredentialsAPI(account: Account, id: number) {
+    let header: HttpHeaders = new HttpHeaders();
+    header.append("accept", "text/json");
+    header.append("Access-Control-Allow-Origin", "*");
+    return this.http.patch<Account>(`${this.ev}/login/${id}`, account, { headers: header });
+  }
+
 }
