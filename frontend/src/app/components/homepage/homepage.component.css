@@ -35,6 +35,7 @@ mat-toolbar h1 {
 .mat-button {
     margin-top: 10px;
     width: 100%;
+    margin-bottom: 15px;
 }
 
 .mat-mdc-card-header {
@@ -53,5 +54,10 @@ mat-toolbar h1 {
 .message {
     padding-top: 10px;
     color: #D72B2B;
+}
+
+.verification {
+    padding-top: 10px;
+    color: #3F51B5;
 }
 
