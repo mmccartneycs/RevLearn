@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Account } from 'src/app/models/account';
 import { AccountService } from 'src/app/services/account.service';
@@ -30,6 +30,10 @@ export class HomepageComponent {
 
   hide = true;
 
+  ngOnInit() {
+    var localStorage = window.localStorage;
+  }
+  
   postLogin(): void {
     let account: Account = { email: this.email, password: this.password }
     this.accountService.postLoginAPI(account).subscribe(

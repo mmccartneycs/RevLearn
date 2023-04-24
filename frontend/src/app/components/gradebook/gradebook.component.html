@@ -1,21 +1,18 @@
 <mat-toolbar>
 </mat-toolbar>
 <h2>Gradebook</h2>
+<p>TODO: write backend join query to get assignment names</p>
 
 <table>
   <thead>
     <tr>
-      <th>Id</th>
-      <th>Teacher ID</th>
-      <th>Student ID</th>
-      <th>Grades</th>
+      <th class="Id">Id</th>
+      <th class="Grades">Grades</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let grade of grades">
       <td>{{ grade.Id }}</td>
-      <td>{{ grade.teacherId }}</td>
-      <td>{{ grade.studentId }}</td>
       <td class="grades">{{ grade.grades }}</td>
     </tr>
   </tbody>
