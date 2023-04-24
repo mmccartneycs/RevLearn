@@ -5,7 +5,7 @@
 <div>
     <h1>My Courses</h1>
     <div class="btn" *ngFor="let course of coursesByStudentId">
-        <button mat-raised-button color="primary" (click)="openMyListOfQuiz(course.course_id)">
+        <button mat-raised-button (click)="openMyListOfQuiz(course.course_id)">
             {{ course.name }}
         </button>
     </div>
