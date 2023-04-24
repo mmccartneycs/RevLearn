@@ -25,6 +25,7 @@
 .mat-button {
     margin-top: 10px;
     width: 100%;
+    margin-bottom: 15px;
 }
 
 .mat-mdc-card-header {
@@ -43,4 +44,9 @@
 .message {
     padding-top: 10px;
     color: #D72B2B;
+}
+
+.verification {
+    padding-top: 10px;
+    color: #3F51B5;
 }

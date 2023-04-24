@@ -84,3 +84,10 @@ mat-icon {
     color: #fff;
     background-color: #000;
 }
+
+.message {
+    padding-top: 10px;
+    color: #3F51B5;
+    display: flex;
+    justify-content: center;
+}

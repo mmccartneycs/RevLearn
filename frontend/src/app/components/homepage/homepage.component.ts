@@ -19,6 +19,7 @@ export class HomepageComponent {
 
   message: string = "";
   reg_message: string = "";
+  reg_verification: string = "";
   messageVisible: boolean = true;
   registerVisible: boolean = true;
 
@@ -51,8 +52,7 @@ export class HomepageComponent {
     this.accountService.postRegisterAPI(account).subscribe((acc: Account) => {
       console.log(acc);
       this.accountService.accInfo = acc;
-      this.authService.isLoggedIn = true;
-      this.router.navigate(['/account']);
+      this.reg_verification = "Registration was successful! Please check verification email."
     },
       error => {
         if (error.status === 401) {
