@@ -4,4 +4,5 @@ export class Gradebook {
     studentId?: number;
     grades?: number;
     quizId?: number;
+    courseId?: number;
   }

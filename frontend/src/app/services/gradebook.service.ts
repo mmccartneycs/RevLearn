@@ -23,4 +23,14 @@ export class GradebookService {
     return this.httpClient.get<Gradebook[]>(`http://localhost:9000/gradebooks/${id}`, { headers: header });
   }
 
+  getCoursesByStudentId(id : number) {
+    let header : HttpHeaders = new HttpHeaders();
+    header.append("accept", "text/json");
+    header.append("Access-Control-Allow-Origin", "*");
+    return this.httpClient.get(`http://localhost:9000/student/${id}/courses`)
+  }
+
+  getAllQuizzes(): Observable<any> {
+    return this.httpClient.get<Gradebook[]>(`http://localhost:9000/quiz`);
+  }
 }
