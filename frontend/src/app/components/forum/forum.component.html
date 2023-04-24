@@ -8,11 +8,17 @@
 
 <h2>Forum Posts</h2>
 
-<div class="forum-box" *ngFor="let post of forums">
-  <p class="user">User: WRITE JOIN TO STUDENT {{ post.userId }}</p>
-  <div class="body" [innerHTML]="post.textBody"></div>
-  <p class="created-at">posted: {{ post.createdAt }}</p>
-</div>
+<ng-container *ngFor="let post of forums">
+  <div class="forum-box">
+    <ng-container *ngFor="let names of student">
+      <div class="user" *ngIf="post.userId === names.id">
+        {{names.firstname}} {{names.lastname}}
+      </div>
+    </ng-container>
+    <div class="body" [innerHTML]="post.textBody"></div>
+    <p class="created-at">posted: {{ post.createdAt }}</p>
+  </div>
+</ng-container>
 
 <h1>Post New Reply</h1>
 

@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Forum } from 'src/app/models/forum';
 import { ForumService } from 'src/app/services/forum.service';
 import { Editor } from 'ngx-editor';
+import { Student } from 'src/app/models/student';
 
 @Component({
   selector: 'app-forum',
@@ -13,6 +14,7 @@ export class ForumComponent implements OnInit, OnDestroy{
   html: '' = "";
   forums: Forum[] = [];
   newPost: Forum;
+  student: Student[] = [];
 
   constructor(private forumService: ForumService) {
     this.newPost = {
@@ -22,7 +24,8 @@ export class ForumComponent implements OnInit, OnDestroy{
       textBody: '',
       createdAt: new Date(),
     };
-   }
+
+  }
 
   ngOnDestroy(): void {
     this.editor.destroy();;
@@ -30,18 +33,28 @@ export class ForumComponent implements OnInit, OnDestroy{
    
   ngOnInit(): void {
     this.editor = new Editor()
+    console.log("TODO:GET FORUM POSTS BY ID (FORUM COMPONENT)")
     this.forumService.getAllForumPostsById(1).subscribe(posts => {
       this.forums = posts;
       console.log(this.forums)
     });
     
     this.newPost = new Forum();
+
+    this.forumService.getAllStudentNames().subscribe(temp => {
+      this.student = temp as any[];
+      console.log(this.student);
+    });
   }
 
 
   addPost(): void {
     console.log("testing" + this.html)
-    this.newPost.userId = 1;
+    var temp = localStorage.getItem('userId');
+    if (temp !== null) {
+      this.newPost.userId = parseInt(temp);
+      console.log("This is the test" + this.newPost.userId)
+    }
     this.newPost.courseId = 1;
     console.log(this.newPost.userId)
     this.newPost.textBody = this.html;
@@ -53,6 +66,13 @@ export class ForumComponent implements OnInit, OnDestroy{
         this.html = '';
       });})
 
-      
+  }
+
+  getAllStudentNames() {
+    this.forumService.getAllStudentNames().subscribe(temp => {
+      this.student = temp as any[];
+      console.log(this.student);
+    })
   }
 }
+
