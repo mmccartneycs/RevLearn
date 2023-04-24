@@ -12,15 +12,16 @@
     <tr>
       <th class="Id">Id</th>
       <th class="Grades">Grades</th>
+
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let grade of grades">
-      <ng-container *ngIf="grade.courseId === selectedCourseId">
+      <ng-container>
         <td>{{ grade.Id }}</td>
         <td>
           <ng-container *ngFor="let quiz of quizes">
-            <div *ngIf="quiz.quizId === grade.quizId">{{ quiz.quizName }}</div>
+            <div *ngIf="quiz.quizId === grade.quizName">{{ quiz.quizName }}</div>
             <td class="grades">{{ grade.grades }}</td>
           </ng-container>
         </td>
