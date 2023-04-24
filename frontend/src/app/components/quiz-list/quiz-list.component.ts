@@ -19,7 +19,7 @@ export class QuizListComponent implements OnInit {
   showSubmit : boolean = false;
   buttonsToDisable : any[] = [];
   postedGrade : any;
-  submitted : boolean = false;
+  timeRemaining: number = 15;
   grade : Gradebook = {
     studentId: this.accountService.accInfo.id,
     grades: this.percent
@@ -84,5 +84,16 @@ export class QuizListComponent implements OnInit {
       console.log(this.postedGrade);
     })
   }
+
+  timer() {
+    setInterval(() => {
+      this.timeRemaining--;
+      if (this.timeRemaining === 0) {
+        alert("Time's up!")
+        this.submit();
+      }
+    }, 1000);
+  }
+  
 }
 

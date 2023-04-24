@@ -11,12 +11,13 @@
     </div>
     <h3>My Quizzes</h3>
     <div *ngFor="let name of quizzesByCourse">
-        <button mat-raised-button color="primary" (click)="openMyQuiz(name)" [disabled]="buttonsToDisable.includes(name) ? true : null">
+        <button mat-raised-button color="primary" (click)="openMyQuiz(name)" (click)="timer()" [disabled]="buttonsToDisable.includes(name) ? true : null">
             {{ name }}
         </button>
         <br>
     </div>
     <div *ngIf="showQuiz">
+        <p>Time remaining: {{ timeRemaining }} seconds</p>
         <form class="quizList" *ngFor="let quiz of quizByQuizName; let i = index">
             <p>Question: {{ i + 1 }}</p>
             <p>{{ quiz.question }}</p>
