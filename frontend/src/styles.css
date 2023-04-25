@@ -13,9 +13,9 @@ body {
 ::-webkit-scrollbar {
     display: none;
 }
-html { background-color: rgba(240, 240, 233, 0.267); }
+html { background-color: rgba(248, 250, 252, 0.781); }
 
 body.dark {
     background-color: #222;
-    color: #fff;
+    color: #d15c5c;
   }
