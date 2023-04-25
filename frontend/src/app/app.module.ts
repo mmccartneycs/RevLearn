@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { AppComponent } from './app.component';
 import { QuizListComponent } from './components/quiz-list/quiz-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RatingModule} from 'ngx-bootstrap/rating';
 
 //Router 
 import { RouterModule, Routes } from '@angular/router';
@@ -40,6 +41,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgxEditorModule } from 'ngx-editor';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { RatingComponent } from './components/rating/rating.component';
+import { MatListModule } from '@angular/material/list';
+
 
 
 
@@ -65,7 +70,8 @@ const routes: Routes = [
     GradebookComponent,
     ForumComponent,
     CoursesListComponent,
-    AccountSettingsComponent
+    AccountSettingsComponent,
+    RatingComponent
 
   ],
   imports: [
@@ -74,6 +80,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
     FormsModule,
+    FlexLayoutModule,
     ReactiveFormsModule,
     [NgxEditorModule],
     NgxEditorModule,
@@ -96,7 +103,9 @@ const routes: Routes = [
     MatDividerModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatTooltipModule
+    MatTooltipModule,
+    RatingModule.forRoot(),
+    MatListModule,
   ],
   exports: [RouterModule],
   providers: [],

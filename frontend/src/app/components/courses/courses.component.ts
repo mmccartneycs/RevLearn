@@ -36,7 +36,7 @@ export class CoursesComponent{
   status = "Register for this Course";
 
   registeredButton() {
-    this.toggle = false;
+    this.toggle = !this.toggle;
     this.status = "You are registered";
   }
 }

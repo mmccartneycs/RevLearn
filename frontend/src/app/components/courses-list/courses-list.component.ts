@@ -43,7 +43,7 @@ export class CoursesListComponent implements OnInit{
   toDisplay = false;
 
   toggleDisplay() {
-    this.toDisplay = !this.toDisplay;
+    this.toDisplay = true;
   }
 }
 

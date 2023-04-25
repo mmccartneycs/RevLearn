@@ -7,6 +7,9 @@ mat-toolbar {
 mat-toolbar h1 {
     margin-left: 58px;
 }
+
+/* Course Table  */
+
 .wrapper-main, .header-main {
     width: 900px;
     margin: 0 auto;
@@ -30,3 +33,5 @@ mat-toolbar h1 {
       padding: 8px;
       border: 1px solid #ddd;
     }
+
+  

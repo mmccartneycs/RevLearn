@@ -25,7 +25,7 @@ export class CoursesService {
     let header : HttpHeaders = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*");
-    return this.HttpClient.post(`${this.ev}/courses/add`, this.courses , {headers : header}); // why am I requried to use 'this.courses'? 
+    return this.HttpClient.post(`${this.ev}/courses/add`, this.courses , {headers : header}); 
   }
 
   deleteCourses(id : number) {
@@ -56,5 +56,10 @@ export class CoursesService {
     return this.HttpClient.post(`${this.ev}/student/${sid}/course/${cid}`, {headers : header});
   }
 
-  // have not put the 'findById' in here yet as we may be making customer queries for finding courses by name, keyworks, departments, or instructors. 
+  dropCourse(sid: number, cid: number) {
+    let header : HttpHeaders = new HttpHeaders();
+    header.append("accept", "text/json");
+    header.append("Access-Control-Allow-Origin", "*");
+    return this.HttpClient.delete(`${this.ev}/student/${sid}/course/${cid}`, {headers : header}) 
+  }
 }
