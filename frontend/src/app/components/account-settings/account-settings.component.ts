@@ -52,7 +52,7 @@ export class AccountSettingsComponent implements OnInit {
   }
 
   isValidForm(): boolean {
-    return !!this.firstname && !!this.lastname && !!this.phone_number && !!this.dob && !!this.address;
+    return !!this.email && !!this.password && !!this.firstname && !!this.lastname && !!this.phone_number && !!this.dob && !!this.address;
   }
 
   onLogout() {
