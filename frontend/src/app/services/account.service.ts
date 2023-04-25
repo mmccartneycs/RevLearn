@@ -16,9 +16,8 @@ export class AccountService {
   ev = "http://localhost:9000"
 
   accInfo: any
-
-  loginEmail: string = ""
-  loginPassword: string = ""
+  loginEmail: any
+  loginPassword: any
 
 
   postLoginAPI(account: Account) {

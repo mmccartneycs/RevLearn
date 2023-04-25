@@ -57,6 +57,8 @@ export class AccountSettingsComponent implements OnInit {
 
   onLogout() {
     this.accountService.accInfo = null;
+    this.accountService.loginEmail = null;
+    this.accountService.loginPassword = null;
     this.userInput = null;
     this.router.navigateByUrl('/');
     this.authService.isLoggedIn = false;
@@ -72,6 +74,8 @@ export class AccountSettingsComponent implements OnInit {
     let account: Account = { email: this.email, password: this.password }
     this.accountService.patchCredentialsAPI(account, this.id).subscribe((credentials: Account) => {
       console.log(credentials);
+      this.accountService.loginEmail = credentials.email;
+      this.accountService.loginPassword = this.password;
       this.message = "Account information updated!"
       setTimeout(() => {
         this.message = null;

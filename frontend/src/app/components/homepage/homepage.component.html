@@ -21,7 +21,7 @@
                     <!-- Login Email -->
                     <mat-form-field class="example-full-width">
                         <mat-label>Email</mat-label>
-                        <input type="email" matInput placeholder="Email" [formControl]="emailFormControl" [(ngModel)]="email" required>
+                        <input type="email" matInput placeholder="Email" [formControl]="emailFormControl" [(ngModel)]="email" name="email" required>
                         <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
                           Please enter a valid email address
                         </mat-error>
@@ -34,7 +34,7 @@
                       <!-- Login Password -->
                       <mat-form-field class="example-full-width">
                         <mat-label>Password</mat-label>
-                        <input [type]="hide ? 'password' : 'text'" matInput placeholder="Password" minlength="4" [(ngModel)]="password" required>
+                        <input [type]="hide ? 'password' : 'text'" matInput placeholder="Password" minlength="4" name="password" [(ngModel)]="password" required [ngModelOptions]="{standalone: true}">
                         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </button>
