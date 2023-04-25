@@ -51,9 +51,9 @@
                     <mat-icon matSuffix>email</mat-icon>
                   </mat-form-field>
 
-                <mat-form-field class="example-mid-width">
+                  <mat-form-field class="example-mid-width">
                     <mat-label>Reset password</mat-label>
-                    <input [type]="hide ? 'password' : 'text'" matInput placeholder="Password" minlength="4" [(ngModel)]="password" required>
+                    <input matInput placeholder="Password" value="{{password}}" minlength="4" name="password" [type]="hide ? 'password' : 'text'" [(ngModel)]="password" required [ngModelOptions]="{standalone: true}">
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
