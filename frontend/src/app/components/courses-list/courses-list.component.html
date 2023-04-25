@@ -21,7 +21,7 @@
                         <td>{{courses.name}}</td>                        
                         <td>{{courses.category}}</td>
                         <td>{{courses.cost| currency}}</td>
-                        <td><button class="btn brn-sm btn-blue" (click)="setCourse(indexOfCourse); toggleDisplay() ">Details</button> </td>              
+                        <td><button mat-raised-button (click)="setCourse(indexOfCourse); toggleDisplay() ">Details</button> </td>              
                     </tr>
             </tbody>
         </table>

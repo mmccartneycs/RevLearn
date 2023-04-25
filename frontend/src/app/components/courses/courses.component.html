@@ -8,6 +8,6 @@
       <p>{{course.description}}</p>
     </mat-card-content>
     <mat-card-actions class="card-button">
-        <button class="blue" (click)="registerCourse(sid, course.course_id); registeredButton()" [ngClass]="{'green': !toggle}">{{status}}</button>
+        <button mat-raised-button class="blue" (click)="registerCourse(sid, course.course_id); registeredButton()" [ngClass]="{'green': !toggle}">{{status}}</button>
     </mat-card-actions>
   </mat-card>
