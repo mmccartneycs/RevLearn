@@ -17,10 +17,14 @@ export class GradebookComponent implements OnInit {
   courses: any[] = [];
   selectedCourseId = 1;
   quizes: Quiz[] = [];
+  cId: any;
+  write: boolean = true;
+  averageGrade: number = 0;
   
   constructor(private gradebookService: GradebookService, private accountService : AccountService) {
     this.grade = {
       Id: 0,
+      courseId: 0,
       teacherId: 0,
       studentId: 0,
       grades: 0,

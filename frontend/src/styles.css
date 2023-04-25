@@ -23,3 +23,9 @@ body {
 ::-webkit-scrollbar {
     display: none;
 }
+html { background-color: rgba(240, 240, 233, 0.267); }
+
+body.dark {
+    background-color: #222;
+    color: #fff;
+  }
