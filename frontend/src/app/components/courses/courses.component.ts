@@ -31,11 +31,14 @@ export class CoursesComponent{
       this.registeredCourse = json;
       console.log(this.registeredCourse)
     });
-   }
- 
- 
- 
+  }
+  toggle = true;
+  status = "Register for this Course";
 
+  registeredButton() {
+    this.toggle = false;
+    this.status = "You are registered";
+  }
 }
 
 
