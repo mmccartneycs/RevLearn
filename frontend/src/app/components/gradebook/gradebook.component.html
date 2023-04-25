@@ -2,8 +2,11 @@
 </mat-toolbar>
 <h2>Gradebook</h2>
 
-<div *ngFor="let course of coursesStudent">
-  <button (click)="cId = this.course.course_id">{{ course.name }}</button>
+<div class="container">
+  <div class="buttons">
+    <button *ngFor="let course of coursesStudent" (click)="selectedCourseId = course.course_id">{{ course.name }}</button>
+  </div>
+  <div class="table-wrapper">
   <table>
     <thead>
       <tr>
@@ -13,7 +16,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let grade of grades">
-        <ng-container *ngIf="cId === grade.courseId">
+        <ng-container *ngIf="selectedCourseId === grade.courseId">
           <td class="quiznames">{{grade.quizName}}</td>
           <td class="grades">{{ grade.grades }}</td>
         </ng-container>
@@ -22,8 +25,9 @@
     <tfoot>
       <tr>
         <td>Average:</td>
-        <td>{{ averageGrade }}</td>
+        <td>{{ averageGrade }}{{selectedCourseId}}</td>
       </tr>
-    </tfoot>
-  </table>
+      </tfoot>
+    </table>
+  </div>
 </div>

@@ -1,27 +1,45 @@
 table {
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  th.Id {
-    text-align: left;
-    order: 1;
-  }
-  
-  th.Grades {
-    text-align: right;
-    order: 2;
-  }
-  
-  .grades {
-    text-align: right;
-  }
+  border-collapse: collapse;
+  width: 100%;
+}
 
-  tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
+th.Id {
+  text-align: left;
+  order: 1;
+}
 
-  mat-toolbar {
-    background-color: #3F51B5;
-    color: white;
+th.Grades {
+  text-align: right;
+  order: 2;
+}
+
+.grades {
+  text-align: right;
+}
+
+tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+mat-toolbar {
+  background-color: #3F51B5;
+  color: white;
+}
+
+.table-wrapper{
+width: 75%;
+}
+
+.container {
+ width:80%;
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+}
+.buttons{
+  margin-left: 20px;
+}
+
+tfoot {
+  text-align: right;
 }
