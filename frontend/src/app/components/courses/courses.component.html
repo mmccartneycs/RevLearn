@@ -4,11 +4,10 @@
       <mat-card-title>{{course.course_level}}-{{course.name}}</mat-card-title>
       <mat-card-subtitle>{{course.cost | currency}}</mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content>
-      
+    <mat-card-content>      
       <p>{{course.description}}</p>
     </mat-card-content>
-    <mat-card-actions>
-        <button (click)="registerCourse(sid, course.course_id)">Register for this Course</button>
+    <mat-card-actions class="card-button">
+        <button class="blue" (click)="registerCourse(sid, course.course_id); registeredButton()" [ngClass]="{'green': !toggle}">{{status}}</button>
     </mat-card-actions>
   </mat-card>

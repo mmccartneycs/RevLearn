@@ -42,7 +42,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { SearchComponent } from './components/search/search.component';
+
 
 
 
@@ -68,7 +68,7 @@ const routes: Routes = [
     CoursesListComponent,
     QuizComponent,
     AccountSettingsComponent,
-    SearchComponent,
+    
 
   ],
   imports: [

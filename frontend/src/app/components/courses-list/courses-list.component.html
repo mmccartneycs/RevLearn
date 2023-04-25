@@ -3,11 +3,10 @@
 <div class="center">
     <div class="header-main"> 
         <h2>Course Catalog</h2>
-        <app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
     </div>  
     <br>
     <section class="wrapper-main">
-        <table *ngIf="searchText ===''|| (courses.name.toLowerCase().includes(searchText) || courses.keywords.toLowerCase().includes(searchText))" >
+        <table>
             <thead>
                 <tr>
                     <th scope="col">Course Level</th>
@@ -23,14 +22,14 @@
                         <td>{{courses.name}}</td>                        
                         <td>{{courses.category}}</td>
                         <td>{{courses.cost| currency}}</td>
-                        <td><button class="btn brn-sm btn-blue" (click)="setCourse(indexOfCourse)">Details</button> </td>              
+                        <td><button class="btn brn-sm btn-blue" (click)="setCourse(indexOfCourse); toggleDisplay() ">Details</button> </td>              
                     </tr>
             </tbody>
         </table>
     </section>     
 </div>
 <br>
-<div class="registration">
+<div class="registration" *ngIf="toDisplay">
     <app-courses [course]="full_course"></app-courses>
 </div>
 
