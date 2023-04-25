@@ -3,4 +3,6 @@ export class Gradebook {
     teacherId?: number;
     studentId?: number;
     grades?: number;
+    quizName?: string;
+
   }

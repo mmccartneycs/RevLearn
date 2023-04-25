@@ -1,9 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Gradebook } from 'src/app/models/gradebook';
-import { Quiz } from 'src/app/models/quiz';
 import { AccountService } from 'src/app/services/account.service';
 import { GradebookService } from 'src/app/services/gradebook.service';
 import { QuizService } from 'src/app/services/quiz.service';
+import sweetalert from 'sweetalert';
+
 
 @Component({
   selector: 'app-quiz-list',
@@ -20,8 +21,11 @@ export class QuizListComponent implements OnInit {
   showSubmit : boolean = false;
   buttonsToDisable : any[] = [];
   postedGrade : any;
+  timeRemaining: number = 15;
+  intervalId : any = null;
   grade : Gradebook = {
     studentId: this.accountService.accInfo.id,
+    quizName: '',
     grades: this.percent
   }
 
@@ -57,11 +61,14 @@ export class QuizListComponent implements OnInit {
   }
   
   submit() {
+    clearInterval(this.intervalId);
+    this.timeRemaining = 15;
     let totalScore : number = 0;
     let points : number = 1;
     for (let i = 0; i < this.quizByQuizName.length; i++) {
       let quiz = this.quizByQuizName[i];
       this.buttonsToDisable.push(quiz.quizName);
+      this.grade.quizName = quiz.quizName; //this sets the quizname to be pushed into the gradebook. 
       console.log(`The correct answer for quizId: ${quiz.quizId} is: ${quiz.answer}`);
       console.log(`The student answered: ${this.selectedAnswers[i]}`);
       if (this.selectedAnswers[i] === quiz.answer) {
@@ -75,6 +82,9 @@ export class QuizListComponent implements OnInit {
     this.showQuiz = false;
     this.showSubmit = false;
     this.postGrade();
+    sweetalert("Your grade has been posted!")
+    console.log(`The grade object's grade: ${this.grade.grades}`)
+    console.log(`The grade object's student Id: ${this.grade.studentId}`)
   }
 
   postGrade() {
@@ -83,5 +93,21 @@ export class QuizListComponent implements OnInit {
       console.log(this.postedGrade);
     })
   }
+
+  timer() {
+    if (this.intervalId) {
+      clearInterval(this.intervalId)
+    }
+      this.intervalId = setInterval(() => {
+      this.timeRemaining--;
+      if (this.timeRemaining === 0) {
+        clearInterval(this.intervalId);
+        sweetalert("Time's up!");
+        this.submit();
+        this.timeRemaining = 15;
+      }
+    }, 1000);
+  }
+  
 }
 

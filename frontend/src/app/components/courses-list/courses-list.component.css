@@ -1,29 +1,32 @@
 mat-toolbar {
     background-color: #3F51B5;
     color: white;
+    align-items: end;
 }
 
+mat-toolbar h1 {
+    margin-left: 58px;
+}
 .wrapper-main, .header-main {
-  width: 900px;
-  margin: 0 auto;
-}
-
-.registration{
-  width: 400px;
-  margin: 0 auto;
-}
-
-table {
-    width: 100%;
+    width: 900px;
+    margin: 0 auto;
   }
   
-  th {
-    font-weight: bold;
-
-  }
-  th, td {
-    text-align: left;
-    padding: 8px;
-    border: 1px solid #ddd;
+  .registration{
+    width: 400px;
+    margin: 0 auto;
   }
   
+  table {
+      width: 100%;
+    }
+    
+    th {
+      font-weight: bold;
+  
+    }
+    th, td {
+      text-align: left;
+      padding: 8px;
+      border: 1px solid #ddd;
+    }

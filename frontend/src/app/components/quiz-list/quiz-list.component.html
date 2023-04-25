@@ -1,21 +1,23 @@
-<div class="quiz">
 <mat-toolbar>
+    <h1>My Courses</h1>
 </mat-toolbar>
+
 <div>
     <h1>My Courses</h1>
     <div class="btn" *ngFor="let course of coursesByStudentId">
-        <button class="btn" (click)="openMyListOfQuiz(course.course_id)">
+        <button mat-raised-button (click)="openMyListOfQuiz(course.course_id)">
             {{ course.name }}
         </button>
     </div>
     <h3>My Quizzes</h3>
-    <div class="btn" *ngFor="let name of quizzesByCourse">
-        <button class="btn" (click)="openMyQuiz(name)" [disabled]="buttonsToDisable.includes(name) ? true : null">
+    <div *ngFor="let name of quizzesByCourse">
+        <button mat-raised-button color="primary" (click)="openMyQuiz(name)" (click)="timer()" [disabled]="buttonsToDisable.includes(name) ? true : null">
             {{ name }}
         </button>
         <br>
     </div>
     <div *ngIf="showQuiz">
+        <p>Time remaining: {{ timeRemaining }} seconds</p>
         <form class="quizList" *ngFor="let quiz of quizByQuizName; let i = index">
             <p>Question: {{ i + 1 }}</p>
             <p>{{ quiz.question }}</p>
@@ -37,6 +39,5 @@
             </div>
         </form>
     </div>
-    <button class="btn" type="submit" (click)="submit()" *ngIf="showSubmit">Submit</button>
-    <p> Your Score: {{percent}}%</p>
+    <button mat-raised-button color="primary" type="submit" (click)="submit()" *ngIf="showSubmit">Submit</button>
 </div>

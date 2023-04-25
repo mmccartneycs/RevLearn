@@ -1,12 +1,14 @@
 <div class="center">
 
+  <img src="https://images.template.net/83816/free-online-learning-illustration-ccdkk.jpg">
+
 <!-- Header for the card -->
 <div class="center-content">
     <mat-card class="example-card">
         <div class="header">
         <mat-card-header>
-          <mat-card-title>Welcome!</mat-card-title>
-          <mat-card-subtitle>Login or Register to get started</mat-card-subtitle>
+          <mat-card-title>Welcome to RevLearn!</mat-card-title>
+          <mat-card-subtitle>Unlock your potential <br> Login or Register to get started</mat-card-subtitle>
         </mat-card-header>
 </div>
 
@@ -15,11 +17,11 @@
             <mat-tab-group #tabGroup (selectedTabChange)="messageVisible = tabGroup.selectedIndex === 0; registerVisible = tabGroup.selectedIndex === 1">
                 <!-- Login card -->
                 <mat-tab label="Login"> 
-                    <mat-form-field class="example-full-width">
 
-                        <!-- Login Email -->
+                    <!-- Login Email -->
+                    <mat-form-field class="example-full-width">
                         <mat-label>Email</mat-label>
-                        <input type="email" matInput placeholder="Email" [formControl]="emailFormControl" [(ngModel)]="email" required>
+                        <input type="email" matInput placeholder="Email" [formControl]="emailFormControl" [(ngModel)]="email" name="email" required>
                         <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
                           Please enter a valid email address
                         </mat-error>
@@ -32,7 +34,7 @@
                       <!-- Login Password -->
                       <mat-form-field class="example-full-width">
                         <mat-label>Password</mat-label>
-                        <input [type]="hide ? 'password' : 'text'" matInput placeholder="Password" minlength="4" [(ngModel)]="password" required>
+                        <input [type]="hide ? 'password' : 'text'" matInput placeholder="Password" minlength="4" name="password" [(ngModel)]="password" required [ngModelOptions]="{standalone: true}">
                         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </button>
@@ -45,7 +47,7 @@
                 <!-- Register card -->
                 <mat-tab label="Register"> 
 
-                    <!-- Register Email -->
+                      <!-- Register Email -->
                     <mat-form-field class="example-full-width">
                         <mat-label>Email</mat-label>
                         <input type="email" matInput placeholder="Email" [formControl]="reg_emailFormControl" [(ngModel)]="reg_email" required>
@@ -67,11 +69,28 @@
                         </button>
                       </mat-form-field>
 
+                      <!-- Register Button -->
                       <button class="mat-button" mat-raised-button color="primary" (click)="postRegister()" [disabled]="!reg_emailFormControl.valid || reg_password.length <=4">Register</button>
                     </mat-tab>
               </mat-tab-group>
+              
+
+              <!-- Forgot password for Login -->
+              <div *ngIf="messageVisible" [matTooltip]="emailFormControl.valid ? '' : 'Please enter a valid email address.'" [matTooltipDisabled]="emailFormControl.valid">
+                <button class="forgot" mat-flat-button [disabled]="!emailFormControl.valid" (click)="postPassword()">Forgot password?</button>
+              </div>  
+
+              <!-- Displays message on Login tab -->
               <h3 class="message" *ngIf="messageVisible">{{message}}</h3>
+
+              <!-- Email verification message on Login tab -->
+              <h3 class="verification">{{passwordEmailSent}}</h3>
+
+              <!-- Displays message on Register tab -->
               <h3 class="message" *ngIf="registerVisible">{{reg_message}}</h3>
+
+              <!-- Email verification message on Register tab -->
+              <h3 class="verification">{{emailSent}}</h3>
         </mat-card-content>
       </mat-card>
 </div>
