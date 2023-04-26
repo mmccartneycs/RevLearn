@@ -10,7 +10,7 @@
     </mat-card-content>
 <!-- This section handles the toggle button for the registration to give a confirmation of registration -->
     <mat-card-actions class="card-button">
-      <button 
+      <button mat-raised-button
       (click)="registerCourse(sid, course.course_id); registeredButton()" 
       [ngClass]="{'blue': toggle,'green': !toggle}">
       {{status}}</button>
