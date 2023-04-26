@@ -31,6 +31,7 @@ export class QuizListComponent implements OnInit {
     quizName: '',
     grades: this.percent
   }
+  dropped : boolean = false;
 
   full_course: any;
 
@@ -40,7 +41,7 @@ export class QuizListComponent implements OnInit {
     this.quizService.getCoursesByStudentId(this.accountService.accInfo.id).subscribe(json => {
       this.coursesByStudentId = json as any [];
       console.log(this.coursesByStudentId); 
-           
+      
     })    
   }
      
@@ -127,9 +128,13 @@ export class QuizListComponent implements OnInit {
   
   dropMyCourse(sid : number, cid : number) {
 
-    this.courseService.dropCourse(sid, cid).subscribe(json => { this.full_course = json; console.log(sid); console.log(cid); console.log(this.full_course); 
+    this.courseService.dropCourse(sid, cid).subscribe(json => { 
+      this.full_course = json; 
+      console.log(sid); console.log(cid); 
+      console.log(this.full_course);
+      this.accountService.accInfo.balance = this.full_course.balance; 
+      console.log("From dropping course: " + this.accountService.accInfo.balance);
+      this.ngOnInit();
     });        
   }
-
 }
-
