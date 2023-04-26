@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Account } from 'src/app/models/account';
 import { Student } from 'src/app/models/student';
 import { AccountService } from 'src/app/services/account.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { QuizService } from 'src/app/services/quiz.service';
 
 
 @Component({
@@ -14,7 +15,9 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class AccountSettingsComponent implements OnInit {
 
-  constructor(private router: Router, private authService: AuthService, private accountService: AccountService) { }
+  @ViewChild('profile') profileRef!: ElementRef;
+
+  constructor(private router: Router, private authService: AuthService, private accountService: AccountService, private quizService: QuizService) { }
 
   userInput: any = this.accountService.accInfo;
   loginEmail: string = this.accountService.loginEmail;
@@ -39,7 +42,16 @@ export class AccountSettingsComponent implements OnInit {
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
 
+  handler: any = null;
+
+  coursesByStudentId: any[] = [];
+  balance: number = 0;
+
+  paid: String = ""
+
+
   ngOnInit() {
+    this.loadStripe();
     this.email = this.loginEmail;
     this.password = this.loginPassword;
     this.id = this.userInput.id;
@@ -49,6 +61,15 @@ export class AccountSettingsComponent implements OnInit {
     this.dob = this.userInput.dob;
     this.address = this.userInput.address;
     localStorage.setItem("userId", this.id.toString());
+    console.log(this.balance);
+
+    this.balance = this.userInput.balance;
+    console.log(this.balance);
+
+    this.quizService.getCoursesByStudentId(this.accountService.accInfo.id).subscribe(json => {
+      this.coursesByStudentId = json as any[];
+      console.log(this.coursesByStudentId);
+    });
   }
 
   isValidForm(): boolean {
@@ -64,10 +85,11 @@ export class AccountSettingsComponent implements OnInit {
     this.authService.isLoggedIn = false;
   }
 
-  showProfileForm = true;
+  showProfile = true;
 
   toggleProfileForm() {
-    this.showProfileForm = !this.showProfileForm;
+    this.showProfile = !this.showProfile;
+    this.profileRef.nativeElement.style.display = 'none';
   }
 
   patchInfo() {
@@ -93,6 +115,10 @@ export class AccountSettingsComponent implements OnInit {
     });
   }
 
+  newAccount() {
+
+  }
+
   clearFields() {
     this.firstname = '';
     this.lastname = '';
@@ -100,5 +126,58 @@ export class AccountSettingsComponent implements OnInit {
     this.dob = '';
     this.address = '';
   }
+
+  pay(amount: any) {
+    var handler = (<any>window).StripeCheckout.configure({
+      key: 'pk_test_51N0oSPG8zIX7CVBsbSZuOhDeiVCZzMn2jf54jb0Ab0eGoXWLGuk3oBg6kWZGNE6aNXXtJgNMj7ubiPPpPpgJfsPU00vGOnGy0V',
+      locale: 'auto',
+      token: (token: any) => {
+        // You can access the token ID with `token.id`.
+        // Get the token ID to your server-side code for use.
+        console.log(token)
+        this.accountService.patchBalanceAPI(this.id).subscribe((student: Student) => {
+          console.log(student)
+          this.balance = student.balance as any
+          this.accountService.accInfo.balance = this.balance;
+          this.coursesByStudentId = [];
+          this.paid = "You have no pending charges!"
+        })
+        alert('Payment received');
+      }
+    });
+
+    handler.open({
+      name: 'RevLearn',
+      description: 'Course Payment',
+      amount: amount * 100
+    });
+
+
+  }
+
+  loadStripe() {
+
+    if (!window.document.getElementById('stripe-script')) {
+      var s = window.document.createElement("script");
+      s.id = "stripe-script";
+      s.type = "text/javascript";
+      s.src = "https://checkout.stripe.com/checkout.js";
+      s.onload = () => {
+        this.handler = (<any>window).StripeCheckout.configure({
+          key: 'pk_test_51N0oSPG8zIX7CVBsbSZuOhDeiVCZzMn2jf54jb0Ab0eGoXWLGuk3oBg6kWZGNE6aNXXtJgNMj7ubiPPpPpgJfsPU00vGOnGy0V',
+          locale: 'auto',
+          token: function (token: any) {
+            // You can access the token ID with `token.id`.
+            // Get the token ID to your server-side code for use.
+            console.log(token)
+            alert('Payment Success!!');
+          }
+        });
+      }
+
+      window.document.body.appendChild(s);
+    }
+  }
+
 
 }

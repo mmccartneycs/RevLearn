@@ -40,6 +40,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgxEditorModule } from 'ngx-editor';
+import {MatListModule} from '@angular/material/list';
 
 
 const routes: Routes = [
@@ -95,7 +96,8 @@ const routes: Routes = [
     MatDividerModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatListModule
   ],
   exports: [RouterModule],
   providers: [],

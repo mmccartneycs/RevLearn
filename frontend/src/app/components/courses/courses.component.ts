@@ -25,11 +25,15 @@ export class CoursesComponent{
    constructor(private coursesService : CoursesService, private accountService : AccountService) {}
 
    sid : number = this.accountService.accInfo.id;
+   balance: any = this.accountService.accInfo.balance
 
    registerCourse(sid : number, cid : number) {
     this.coursesService.registerCourse(sid, cid).subscribe(json => {
       this.registeredCourse = json;
       console.log(this.registeredCourse)
+      this.balance = this.balance + this.registeredCourse.cost;
+      console.log(this.balance);
+      this.accountService.updateBalance(this.balance);
     });
    }
  
