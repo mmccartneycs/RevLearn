@@ -150,3 +150,14 @@ mat-icon {
     --mdc-protected-button-container-color: #3F51B5;
     --mdc-protected-button-label-text-color: white;
 }
+
+hr.rounded {
+    border-top: 1px solid lightgray;
+    border-radius: 5px;
+    width: 50%;
+}
+
+.account {
+    font-weight: bold;
+
+}
