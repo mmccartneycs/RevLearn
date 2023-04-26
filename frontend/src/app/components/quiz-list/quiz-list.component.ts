@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Courses } from 'src/app/models/courses';
 import { Gradebook } from 'src/app/models/gradebook';
 import { AccountService } from 'src/app/services/account.service';
+import { CoursesService } from 'src/app/services/courses.service';
 import { GradebookService } from 'src/app/services/gradebook.service';
 import { QuizService } from 'src/app/services/quiz.service';
 import sweetalert from 'sweetalert';
@@ -29,13 +31,16 @@ export class QuizListComponent implements OnInit {
     grades: this.percent
   }
 
-  constructor(private quizService: QuizService, private accountService: AccountService, private gradebookService : GradebookService) {}
+  full_course: any;
+
+  constructor(private quizService: QuizService, public accountService: AccountService, private gradebookService : GradebookService, private courseService: CoursesService) {}
   
   ngOnInit() {
     this.quizService.getCoursesByStudentId(this.accountService.accInfo.id).subscribe(json => {
       this.coursesByStudentId = json as any [];
-      console.log(this.coursesByStudentId);
-    })
+      console.log(this.coursesByStudentId); 
+           
+    })    
   }
      
   openMyListOfQuiz(id : number) {
@@ -111,5 +116,11 @@ export class QuizListComponent implements OnInit {
     }, 1000);
   }
   
+  dropMyCourse(sid : number, cid : number) {
+
+    this.courseService.dropCourse(sid, cid).subscribe(json => { this.full_course = json; console.log(sid); console.log(cid); console.log(this.full_course); 
+    });        
+  }
+
 }
 

@@ -26,13 +26,29 @@ mat-toolbar h1 {
 .mat-mdc-raised-button {
   --mdc-protected-button-container-color: #3F51B5;
   --mdc-protected-button-label-text-color: white;
+  
 }
 
 .course-card {
   max-width: 400px;
-  height: 400px;
 }
 
-.card-button {
-justify-content: center;
+mat-card-header {
+  color:#3F51B5;
+}
+
+mat-card-actions {
+  justify-content: center;
+}
+
+.button-row {
+    max-width: 400px;
+}
+
+.content {
+  padding: 16px;
+}
+
+.content > mat-card {
+  width: 200px;
 }
