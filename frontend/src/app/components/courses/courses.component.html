@@ -1,7 +1,18 @@
-<div>
-    <p>Course: {{course.course_level}} - {{course.name}}</p>
-    <p>Description: {{course.description}}</p>
-    <p>Cost: {{course.cost}} </p>
-    <button (click)="registerCourse(sid, course.course_id)">Register for this Course</button>
-</div>
+<!-- Creates the card that shows at the bottom of the course catalog when a course is selected -->
+<mat-card class="course-card">
+    <mat-card-header>
+      <mat-card-title>{{course.course_level}}-{{course.name}}</mat-card-title>
+      <mat-card-subtitle>{{course.cost | currency}}</mat-card-subtitle>
+    </mat-card-header>
 
+    <mat-card-content>      
+      <p>{{course.description}}</p>
+    </mat-card-content>
+<!-- This section handles the toggle button for the registration to give a confirmation of registration -->
+    <mat-card-actions class="card-button">
+      <button mat-raised-button
+      (click)="registerCourse(sid, course.course_id); registeredButton()" 
+      [ngClass]="{'blue': toggle,'green': !toggle}">
+      {{status}}</button>
+    </mat-card-actions>
+  </mat-card>

@@ -1,19 +1,30 @@
 <mat-toolbar>
 </mat-toolbar>
 <h2>Gradebook</h2>
-<p>TODO: write backend join query to get assignment names</p>
 
-<table>
-  <thead>
-    <tr>
-      <th class="Id">Id</th>
-      <th class="Grades">Grades</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let grade of grades">
-      <td>{{ grade.Id }}</td>
-      <td class="grades">{{ grade.grades }}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="container">
+  <div class="buttons">
+    <button *ngFor="let course of coursesStudent" (click)="selectedCourseId = course.course_id">{{ course.name }}</button>
+  </div>
+  <div class="table-wrapper">
+  <table>
+    <thead>
+      <tr>
+        <th class="Id">Assignment</th>
+        <th class="Grades">Grades</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let grade of grades">
+        <ng-container *ngIf="selectedCourseId === grade.courseId">
+          <td class="quiznames">{{grade.quizName}}</td>
+          <td class="grades">{{ grade.grades }}</td>
+        </ng-container>
+      </tr>
+    </tbody>
+    <tfoot>
+      <p> </p>
+      </tfoot>
+    </table>
+  </div>
+</div>

@@ -33,7 +33,6 @@ export class ForumComponent implements OnInit, OnDestroy{
    
   ngOnInit(): void {
     this.editor = new Editor()
-    console.log("TODO:GET FORUM POSTS BY ID (FORUM COMPONENT)")
     this.forumService.getAllForumPostsById(1).subscribe(posts => {
       this.forums = posts;
       console.log(this.forums)
