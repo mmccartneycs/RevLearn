@@ -13,17 +13,15 @@ mat-toolbar {
   width: 100%;
 }
 
-/* Styles for the forum posts */
 .forum-box {
   border: 1px solid #ccc;
   border-radius: 4px;
   margin: 20px;
   padding: 10px;
-  width:75%;
+  width: 75%;
   position: relative;
-  
+  padding-bottom: 30px; 
 }
-
 
 .forum-box .user {
   font-size: 16px;
@@ -31,7 +29,7 @@ mat-toolbar {
 
 .forum-box .created-at {
   position: absolute;
-  bottom: 0;
+  bottom: 5px; 
   right: 0;
   font-size: 14px;
   margin: 10px;
@@ -54,7 +52,7 @@ button {
   border: none;
   color: white;
   padding: 10px 20px;
-  border-radius: 4px;
+  border-radius: 40px;
   font-size: 16px;
   cursor: pointer;
 }

@@ -3,11 +3,42 @@
 </mat-toolbar>
 
 <div>
-    <h1>My Courses</h1>
+    
     <div class="btn" *ngFor="let course of coursesByStudentId">
-        <button mat-raised-button (click)="openMyListOfQuiz(course.course_id)">
-            {{ course.name }}
-        </button>
+        <div fxLayout="row wrap" fxLayoutGap="grid">
+            <mat-card class="course-card" >
+                <mat-card-header>
+                    <mat-card-title>{{course.course_level}}-{{course.name}}</mat-card-title>
+                </mat-card-header>
+                <mat-divider></mat-divider>
+                <mat-card-content> 
+                    <br>     
+                    <p>Weekly assignments:</p>
+                          <ul>
+                              <li>Post a reply to the weekly discussion question. </li>
+                              <li>Reply to 2 posts. </li>
+                              <li>Take the quiz. </li>
+                          </ul>
+                    <br>
+                    
+                </mat-card-content>
+                <mat-divider></mat-divider>
+                <mat-card-actions class="card-button">
+                    <section>
+                        <div class="button-row">
+                            <button mat-raised-button (click)="openMyListOfQuiz(course.course_id)" style="margin-right:10px">
+                                Quiz List
+                             </button> 
+                             <button mat-raised-button style="margin-left:10px" (click)="dropMyCourse(accountService.accInfo.id, course.course_id)">
+                                Drop Course
+                             </button>    
+                        </div>    
+                    </section>
+                                                            
+                </mat-card-actions>
+           </mat-card>
+          </div>
+          
     </div>
     <h3>My Quizzes</h3>
     <div *ngFor="let name of quizzesByCourse">

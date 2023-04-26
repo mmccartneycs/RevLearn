@@ -1,8 +1,9 @@
 <mat-toolbar>
     <h1>Course Catalog</h1>
 </mat-toolbar>
+
+<!-- This section is the layout of the table for the course catalog -->
 <div class="center">
-    
     <br>
     <section class="wrapper-main">
         <table>
@@ -15,7 +16,10 @@
                     <th scope="col">Details</th>
                 </tr>
             </thead>
-            <tbody>                
+            <tbody>  
+                    <!--This section utilizes the ngFor directive to load in the information for each course into each row -->
+                    <!--The indexOfCourse is used to help grab the details utilized to create a card with the information for that courses loaded on it-->
+                    <!--That card also gives the option to register for the course.  This functionality is found in the Courses component.-->
                     <tr *ngFor="let courses of courses; let indexOfCourse = index;">                  
                         <td>{{courses.course_level}}</td>
                         <td>{{courses.name}}</td>                        
