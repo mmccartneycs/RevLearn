@@ -73,3 +73,8 @@ mat-toolbar h1 {
 img {
     height: 600px;
 }
+
+.mat-mdc-raised-button.mat-primary {
+    --mdc-protected-button-container-color: #3F51B5;
+    --mdc-protected-button-label-text-color: white;
+}

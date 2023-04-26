@@ -6,6 +6,7 @@ import { CoursesService } from 'src/app/services/courses.service';
 import { GradebookService } from 'src/app/services/gradebook.service';
 import { QuizService } from 'src/app/services/quiz.service';
 import sweetalert from 'sweetalert';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -89,7 +90,12 @@ export class QuizListComponent implements OnInit {
     this.showQuiz = false;
     this.showSubmit = false;
     this.postGrade();
-    sweetalert("Your grade has been posted!")
+    Swal.fire({
+      icon: 'success',
+      title: 'Awesome work!',
+      text: 'Your grade has been posted.',
+      confirmButtonColor: '#3F51B5'
+    })
     console.log(`The grade object's grade: ${this.grade.grades}`)
     console.log(`The grade object's student Id: ${this.grade.studentId}`)
   }
@@ -108,10 +114,13 @@ export class QuizListComponent implements OnInit {
       this.intervalId = setInterval(() => {
       this.timeRemaining--;
       if (this.timeRemaining === 0) {
+        sweetalert({
+          icon: 'info',
+          title: 'Time is Up!'
+        })
         clearInterval(this.intervalId);
-        sweetalert("Time's up!");
-        this.submit();
         this.timeRemaining = 15;
+        this.submit();
       }
     }, 1000);
   }
