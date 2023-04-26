@@ -1,0 +1,19 @@
+.course-card {
+    max-width: 400px;
+  }
+
+.card-button {
+  justify-content: center;
+}
+
+.blue {
+  background-color: blue;
+  color: white
+
+}
+
+.green {
+  background-color: green;
+  color: white;
+}
+

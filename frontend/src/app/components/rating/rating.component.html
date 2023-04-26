@@ -1,0 +1,11 @@
+<div id="rate">
+	<rating [(ngModel)]="rate" [max]="max"
+		[readonly]="false">
+	</rating>
+</div>
+<div class="card">
+	<pre class="card-block card-header"
+		style="margin: 15px 0;">
+		Current Rating: <b>{{rate}}</b>
+	</pre>
+</div>

@@ -1,7 +1,9 @@
 export class Gradebook {
     Id?: number;
     teacherId?: number;
+    courseId?: number;
     studentId?: number;
     grades?: number;
-    quizId?: number;
+    quizName?: string;
+
   }

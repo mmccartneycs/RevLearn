@@ -2,27 +2,38 @@
     <h1>Course Catalog</h1>
 </mat-toolbar>
 
-<section id="list-of-courses">
-    <table class="table">
-        <thead>
-            <tr class = "course-table-header">
-                <th scope="col">Course Level</th>
-                <th scope="col">Course Name</th>
-                <th scope="col">Department</th>
-                <th scope="col">Instructor</th>
-                <th scope="col">Cost</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let courses of courses; let indexOfCourse = index;">
-            <td class="course_level">{{courses.course_level}}</td>
-            <td class="name"><a (click)="setCourse(indexOfCourse)">{{courses.name}}</a></td>
-            <td class="department">{{courses.category}}</td>
-            <td class="instructor">{{courses.educator_id}}</td>
-            <td class="cost">{{courses.cost| currency}}</td>
-            </tr>
-        </tbody>
-    </table>
-</section>
+<!-- This section is the layout of the table for the course catalog -->
+<div class="center">
+    <br>
+    <section class="wrapper-main">
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Course Level</th>
+                    <th scope="col">Course Name</th>
+                    <th scope="col">Department</th>
+                    <th scope="col">Cost</th>
+                    <th scope="col">Details</th>
+                </tr>
+            </thead>
+            <tbody>  
+                    <!--This section utilizes the ngFor directive to load in the information for each course into each row -->
+                    <!--The indexOfCourse is used to help grab the details utilized to create a card with the information for that courses loaded on it-->
+                    <!--That card also gives the option to register for the course.  This functionality is found in the Courses component.-->
+                    <tr *ngFor="let courses of courses; let indexOfCourse = index;">                  
+                        <td>{{courses.course_level}}</td>
+                        <td>{{courses.name}}</td>                        
+                        <td>{{courses.category}}</td>
+                        <td>{{courses.cost| currency}}</td>
+                        <td><button mat-raised-button (click)="setCourse(indexOfCourse); toggleDisplay() ">Details</button> </td>              
+                    </tr>
+            </tbody>
+        </table>
+    </section>     
+</div>
 <br>
-<app-courses [course]="full_course"></app-courses>
+<div class="registration" *ngIf="toDisplay">
+    <app-courses [course]="full_course"></app-courses>
+</div>
+
+<br>

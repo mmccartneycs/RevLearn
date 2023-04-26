@@ -1,4 +1,7 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { NgModel } from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
 import { Courses } from 'src/app/models/courses';
 import { CoursesService } from 'src/app/services/courses.service';
 
@@ -7,6 +10,7 @@ import { CoursesService } from 'src/app/services/courses.service';
   templateUrl: './courses-list.component.html',
   styleUrls: ['./courses-list.component.css']
 })
+
 export class CoursesListComponent implements OnInit{
 
   courses: any;
@@ -28,7 +32,7 @@ export class CoursesListComponent implements OnInit{
     this.refresh();
   }
   refresh() : void {
-    this.coursesService.getAllCourses().subscribe(json => {this.courses =json; console.log(this.courses);});    
+    this.coursesService.getAllCourses().subscribe(json => {this.courses =json; console.log(this.courses);});
     
   }
   setCourse(id : number ) : void {
@@ -36,6 +40,11 @@ export class CoursesListComponent implements OnInit{
     console.log(this.full_course);
   }
 
+  toDisplay = false;
+
+  toggleDisplay() {
+    this.toDisplay = !this.toDisplay;
+  }
 }
 
 
