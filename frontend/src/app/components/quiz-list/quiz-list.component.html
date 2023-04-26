@@ -6,7 +6,7 @@
     
     <div class="btn" *ngFor="let course of coursesByStudentId">
         <div fxLayout="row wrap" fxLayoutGap="grid">
-            <mat-card class="course-card">
+            <mat-card class="course-card" >
                 <mat-card-header>
                     <mat-card-title>{{course.course_level}}-{{course.name}}</mat-card-title>
                 </mat-card-header>
@@ -29,7 +29,7 @@
                             <button mat-raised-button (click)="openMyListOfQuiz(course.course_id)" style="margin-right:10px">
                                 Quiz List
                              </button> 
-                             <button mat-raised-button style="margin-left:10px">
+                             <button mat-raised-button style="margin-left:10px" (click)="dropMyCourse(accountService.accInfo.id, course.course_id)">
                                 Drop Course
                              </button>    
                         </div>    

@@ -33,13 +33,14 @@ export class QuizListComponent implements OnInit {
 
   full_course: any;
 
-  constructor(private quizService: QuizService, private accountService: AccountService, private gradebookService : GradebookService, private courseService: CoursesService) {}
+  constructor(private quizService: QuizService, public accountService: AccountService, private gradebookService : GradebookService, private courseService: CoursesService) {}
   
   ngOnInit() {
     this.quizService.getCoursesByStudentId(this.accountService.accInfo.id).subscribe(json => {
       this.coursesByStudentId = json as any [];
-      console.log(this.coursesByStudentId);
-    })
+      console.log(this.coursesByStudentId); 
+           
+    })    
   }
      
   openMyListOfQuiz(id : number) {
@@ -114,8 +115,10 @@ export class QuizListComponent implements OnInit {
   }
   
   dropMyCourse(sid : number, cid : number) {
-    this.courseService.dropCourse(sid, cid).subscribe(json => { this.full_course = json; 
-    });
+
+    this.courseService.dropCourse(sid, cid).subscribe(json => { this.full_course = json; console.log(sid); console.log(cid); console.log(this.full_course); 
+    });        
   }
+
 }
 

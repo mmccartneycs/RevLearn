@@ -44,6 +44,7 @@ import { NgxEditorModule } from 'ngx-editor';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RatingComponent } from './components/rating/rating.component';
 import { MatListModule } from '@angular/material/list';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 
 
@@ -106,6 +107,7 @@ const routes: Routes = [
     MatTooltipModule,
     RatingModule.forRoot(),
     MatListModule,
+    MatButtonToggleModule,
   ],
   exports: [RouterModule],
   providers: [],

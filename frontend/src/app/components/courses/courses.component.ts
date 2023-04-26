@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input} from '@angular/core';
 import { Courses } from 'src/app/models/courses';
 import { AccountService } from 'src/app/services/account.service';
 import { CoursesService } from 'src/app/services/courses.service';
@@ -24,6 +24,8 @@ export class CoursesComponent{
 
    constructor(private coursesService : CoursesService, private accountService : AccountService) {}
 
+  //  This section handles the registration of the course and persists to My Courses.
+
    sid : number = this.accountService.accInfo.id;
 
    registerCourse(sid : number, cid : number) {
@@ -32,12 +34,15 @@ export class CoursesComponent{
       console.log(this.registeredCourse)
     });
   }
+
+  // This section works with the toggle button for registering for a class
+
   toggle = true;
-  status = "Register for this Course";
+  status = "Register for this course";
 
   registeredButton() {
     this.toggle = !this.toggle;
-    this.status = "You are registered";
+    this.status = this.toggle ? "Register for this course" : "You are registered!";
   }
 }
 

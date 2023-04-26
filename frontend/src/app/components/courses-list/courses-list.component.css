@@ -34,4 +34,9 @@ mat-toolbar h1 {
       border: 1px solid #ddd;
     }
 
+    .mat-mdc-raised-button.mat-unthemed {
+      --mdc-protected-button-container-color: #3F51B5;
+      --mdc-protected-button-label-text-color: white;
+    }
+
   
