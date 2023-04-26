@@ -6,12 +6,7 @@
     <mat-divider></mat-divider>
 
     <!-- Profile button -->
-    <button
-      mat-button
-      color="white"
-      class="menu-button"
-      (click)="showProfile = true"
-    >
+    <button mat-button color="white" class="menu-button" (click)="showProfile = true">
       <mat-icon>person</mat-icon>
       <span>Profile</span>
     </button>
@@ -45,19 +40,110 @@
     </div>
     <!-- Profile -->
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content style="margin-left: 300px">
     <div class="profile" #profile mat-elevation-z4>
       <div class="profile" *ngIf="showProfile">
         <form class="example-form">
+
+          <div class="example-full-width"> 
+          <div class="form-text">
+            <h1 class="account">Account</h1>
+          <h3>Personal Information</h3>
+        </div>
+      </div>
+
           <!-- ID -->
           <div class="example-full-width">
-            <mat-form-field class="id">
+            <mat-form-field appearance="outline" class="id">
               <mat-label>ID</mat-label>
               <input matInput disabled value="{{ id }}" />
             </mat-form-field>
           </div>
+          
+          
+          <!-- First name input -->
+          <mat-form-field appearance="outline" class="example-mid-width">
+            <mat-label>First Name</mat-label>
+            <input
+              matInput
+              placeholder="John"
+              value="{{ firstname }}"
+              [(ngModel)]="this.firstname"
+              [ngModelOptions]="{ standalone: true }"
+              required
+            />
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field>
+          <!-- Last name input -->
+          <mat-form-field appearance="outline" class="example-mid-width">
+            <mat-label>Last Name</mat-label>
+            <input
+              matInput
+              placeholder="Doe"
+              value="{{ lastname }}"
+              [(ngModel)]="this.lastname"
+              [ngModelOptions]="{ standalone: true }"
+              required
+            />
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field>
+          <!-- Telephone input -->
+          <mat-form-field appearance="outline" class="example-mid-width">
+            <mat-label>Telephone</mat-label>
+            <input
+              type="tel"
+              matInput
+              placeholder="555-555-1234"
+              value="{{ phone_number }}"
+              [(ngModel)]="this.phone_number"
+              [ngModelOptions]="{ standalone: true }"
+              required
+            />
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field>
+          <!-- Date input -->
+          <mat-form-field appearance="outline" class="example-mid-width">
+            <mat-label>Choose a date</mat-label>
+            <input
+              matInput
+              placeholder="01-01-1999"
+              value="{{ dob }}"
+              [(ngModel)]="this.dob"
+              [ngModelOptions]="{ standalone: true }"
+              required
+            />
+            <mat-icon matSuffix>mode_edit</mat-icon>
+            <mat-hint>MM-DD-YYYY</mat-hint>
+          </mat-form-field>
+          <!-- Address input -->
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Address</mat-label>
+            <textarea
+              matInput
+              placeholder="Ex. 123 Main St"
+              [(ngModel)]="this.address"
+              [ngModelOptions]="{ standalone: true }"
+              required
+              >{{ address }}</textarea
+            >
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field>
+
+        </form>
+
+        <hr class="rounded">
+
+        <form class="example-form-2">
+
+          <div class="example-full-width"> 
+            <div class="form-text">
+              <h2>Update Email and Password</h2>
+          </div>
+        </div>
+
+
           <!-- Email input -->
-          <mat-form-field class="example-mid-width">
+          <mat-form-field appearance="outline" class="example-mid-width">
             <mat-label>Email</mat-label>
             <input
               type="email"
@@ -81,7 +167,7 @@
             <mat-icon matSuffix>email</mat-icon>
           </mat-form-field>
           <!-- Password input -->
-          <mat-form-field class="example-mid-width">
+          <mat-form-field appearance="outline" class="example-mid-width">
             <mat-label>Reset password</mat-label>
             <input
               matInput
@@ -104,74 +190,10 @@
               <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
             </button>
           </mat-form-field>
-          <!-- First name input -->
-          <mat-form-field class="example-mid-width">
-            <mat-label>First Name</mat-label>
-            <input
-              matInput
-              placeholder="John"
-              value="{{ firstname }}"
-              [(ngModel)]="this.firstname"
-              [ngModelOptions]="{ standalone: true }"
-              required
-            />
-            <mat-icon matSuffix>mode_edit</mat-icon>
-          </mat-form-field>
-          <!-- Last name input -->
-          <mat-form-field class="example-mid-width">
-            <mat-label>Last Name</mat-label>
-            <input
-              matInput
-              placeholder="Doe"
-              value="{{ lastname }}"
-              [(ngModel)]="this.lastname"
-              [ngModelOptions]="{ standalone: true }"
-              required
-            />
-            <mat-icon matSuffix>mode_edit</mat-icon>
-          </mat-form-field>
-          <!-- Telephone input -->
-          <mat-form-field class="example-mid-width">
-            <mat-label>Telephone</mat-label>
-            <input
-              type="tel"
-              matInput
-              placeholder="555-555-1234"
-              value="{{ phone_number }}"
-              [(ngModel)]="this.phone_number"
-              [ngModelOptions]="{ standalone: true }"
-              required
-            />
-            <mat-icon matSuffix>mode_edit</mat-icon>
-          </mat-form-field>
-          <!-- Date input -->
-          <mat-form-field class="example-mid-width">
-            <mat-label>Choose a date</mat-label>
-            <input
-              matInput
-              placeholder="01-01-1999"
-              value="{{ dob }}"
-              [(ngModel)]="this.dob"
-              [ngModelOptions]="{ standalone: true }"
-              required
-            />
-            <mat-icon matSuffix>mode_edit</mat-icon>
-            <mat-hint>MM-DD-YYYY</mat-hint>
-          </mat-form-field>
-          <!-- Address input -->
-          <mat-form-field class="example-full-width">
-            <mat-label>Address</mat-label>
-            <textarea
-              matInput
-              placeholder="Ex. 123 Main St"
-              [(ngModel)]="this.address"
-              [ngModelOptions]="{ standalone: true }"
-              required
-              >{{ address }}</textarea
-            >
-            <mat-icon matSuffix>mode_edit</mat-icon>
-          </mat-form-field>
+
         </form>
+
+        <hr class="rounded">
         <!-- Clear button -->
         <div class="button-div">
           <button
@@ -196,7 +218,7 @@
               (click)="patchInfo()"
               [disabled]="!isValidForm()"
             >
-              Save
+              Submit
             </button>
           </div>
         </div>
@@ -223,7 +245,7 @@
           <mat-card-content>
             <div class="row mt-5">
               <div class="col-md-4">
-                <h2>Current courses:</h2>
+                <h2 class="courses">Current courses:</h2>
                   <button mat-flat-button *ngFor="let course of coursesByStudentId" class="courses">
                     <p>{{ course.name }}</p>
                   </button>

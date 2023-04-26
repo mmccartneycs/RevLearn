@@ -6,7 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { AppComponent } from './app.component';
 import { QuizListComponent } from './components/quiz-list/quiz-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RatingModule} from 'ngx-bootstrap/rating';
+import { RatingModule } from 'ngx-bootstrap/rating';
 
 //Router 
 import { RouterModule, Routes } from '@angular/router';
