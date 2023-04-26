@@ -6,6 +6,7 @@ import { Student } from 'src/app/models/student';
 import { AccountService } from 'src/app/services/account.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { QuizService } from 'src/app/services/quiz.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -142,7 +143,11 @@ export class AccountSettingsComponent implements OnInit {
           this.coursesByStudentId = [];
           this.paid = "You have no pending charges!"
         })
-        alert('Payment received');
+        Swal.fire({
+          icon: 'success',
+          title: 'Payment received!',
+          confirmButtonColor: '#3F51B5'
+        })
       }
     });
 

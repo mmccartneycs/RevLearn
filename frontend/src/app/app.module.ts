@@ -41,10 +41,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgxEditorModule } from 'ngx-editor';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RatingComponent } from './components/rating/rating.component';
-import { MatListModule } from '@angular/material/list';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 
@@ -104,7 +103,7 @@ const routes: Routes = [
     MatDatepickerModule,
     MatNativeDateModule,
     MatTooltipModule,
-    MatListModule
+    MatListModule,
     RatingModule.forRoot(),
     MatListModule,
     MatButtonToggleModule,
