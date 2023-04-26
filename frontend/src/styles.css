@@ -13,3 +13,9 @@ body {
 ::-webkit-scrollbar {
     display: none;
 }
+html { background-color: rgba(248, 250, 252, 0.781); }
+
+body.dark {
+    background-color: #222;
+    color: #d15c5c;
+  }

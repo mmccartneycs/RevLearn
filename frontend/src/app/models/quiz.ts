@@ -1,5 +1,6 @@
 export interface Quiz {
     quizId? : number
+    courseId? : number
     quizName? : string
     answer? : string
     answer1? : string

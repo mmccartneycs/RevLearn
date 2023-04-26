@@ -68,7 +68,9 @@ export class QuizListComponent implements OnInit {
     for (let i = 0; i < this.quizByQuizName.length; i++) {
       let quiz = this.quizByQuizName[i];
       this.buttonsToDisable.push(quiz.quizName);
+      this.grade.courseId = quiz.courseId; //this sets the courseId to be pushed into the gradebook. 
       this.grade.quizName = quiz.quizName; //this sets the quizname to be pushed into the gradebook. 
+      console.log("course Id" + this.grade.courseId); 
       console.log(`The correct answer for quizId: ${quiz.quizId} is: ${quiz.answer}`);
       console.log(`The student answered: ${this.selectedAnswers[i]}`);
       if (this.selectedAnswers[i] === quiz.answer) {
