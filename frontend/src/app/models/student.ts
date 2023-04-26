@@ -4,5 +4,6 @@ export interface Student {
     lastname: string,
     address: string,
     phone_number: string,
-    dob: string
+    dob: string,
+    balance?: number
 }

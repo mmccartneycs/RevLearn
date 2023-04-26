@@ -1,103 +1,242 @@
-<mat-toolbar>
-    Welcome to your account
-</mat-toolbar>
-
-
 <mat-sidenav-container>
-    <mat-sidenav class="sidenav" mode="side" opened>
+  <!-- Side navigational bar-->
+  <mat-sidenav class="sidenav" mode="side" opened>
+    <h1>Welcome {{ firstname }}</h1>
 
-        
-        <h1 >Welcome {{firstname}}</h1>
+    <mat-divider></mat-divider>
 
-        <mat-divider></mat-divider>
+    <!-- Profile button -->
+    <button
+      mat-button
+      color="white"
+      class="menu-button"
+      (click)="showProfile = true"
+    >
+      <mat-icon>person</mat-icon>
+      <span>Profile</span>
+    </button>
 
-        <button mat-button color="white" class="menu-button" (click)="showProfileForm = !showProfileForm">
-            <mat-icon>person</mat-icon>
-            <span>Profile</span>
-        </button>
+    <!-- Payment button -->
+    <button
+      mat-button
+      color="white"
+      class="menu-button"
+      (click)="showProfile = false"
+    >
+      <mat-icon>payment</mat-icon>
+      <span>Payment</span>
+    </button>
 
-        <button mat-button color="white" class="menu-button">
-            <mat-icon>payment</mat-icon>
-            <span>Payment</span>
-        </button>
-
-    <div [matTooltip]="isValidForm() ? '' : 'Please complete all fields.'" [matTooltipDisabled]="isValidForm()">
-        <button mat-button color="white" class="menu-button" (click)="onLogout()" [disabled]="!isValidForm()">
-            <mat-icon>exit_to_app</mat-icon>
-            <span>Log Out</span>
-        </button>
+    <div
+      [matTooltip]="isValidForm() ? '' : 'Please complete all fields.'"
+      [matTooltipDisabled]="isValidForm()"
+    >
+      <!-- Logout button -->
+      <button
+        mat-button
+        color="white"
+        class="menu-button"
+        (click)="onLogout()"
+        [disabled]="!isValidForm()"
+      >
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Log Out</span>
+      </button>
+    </div>
+    <!-- Profile -->
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="profile" #profile mat-elevation-z4>
+      <div class="profile" *ngIf="showProfile">
+        <form class="example-form">
+          <!-- ID -->
+          <div class="example-full-width">
+            <mat-form-field class="id">
+              <mat-label>ID</mat-label>
+              <input matInput disabled value="{{ id }}" />
+            </mat-form-field>
+          </div>
+          <!-- Email input -->
+          <mat-form-field class="example-mid-width">
+            <mat-label>Email</mat-label>
+            <input
+              type="email"
+              matInput
+              placeholder="Email"
+              [formControl]="emailFormControl"
+              [(ngModel)]="email"
+              required
+            />
+            <mat-error
+              *ngIf="
+                emailFormControl.hasError('email') &&
+                !emailFormControl.hasError('required')
+              "
+            >
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
+            <mat-icon matSuffix>email</mat-icon>
+          </mat-form-field>
+          <!-- Password input -->
+          <mat-form-field class="example-mid-width">
+            <mat-label>Reset password</mat-label>
+            <input
+              matInput
+              placeholder="Password"
+              value="{{ password }}"
+              minlength="4"
+              name="password"
+              [type]="hide ? 'password' : 'text'"
+              [(ngModel)]="password"
+              required
+              [ngModelOptions]="{ standalone: true }"
+            />
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="hide = !hide"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide"
+            >
+              <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+            </button>
+          </mat-form-field>
+          <!-- First name input -->
+          <mat-form-field class="example-mid-width">
+            <mat-label>First Name</mat-label>
+            <input
+              matInput
+              placeholder="John"
+              value="{{ firstname }}"
+              [(ngModel)]="this.firstname"
+              [ngModelOptions]="{ standalone: true }"
+              required
+            />
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field>
+          <!-- Last name input -->
+          <mat-form-field class="example-mid-width">
+            <mat-label>Last Name</mat-label>
+            <input
+              matInput
+              placeholder="Doe"
+              value="{{ lastname }}"
+              [(ngModel)]="this.lastname"
+              [ngModelOptions]="{ standalone: true }"
+              required
+            />
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field>
+          <!-- Telephone input -->
+          <mat-form-field class="example-mid-width">
+            <mat-label>Telephone</mat-label>
+            <input
+              type="tel"
+              matInput
+              placeholder="555-555-1234"
+              value="{{ phone_number }}"
+              [(ngModel)]="this.phone_number"
+              [ngModelOptions]="{ standalone: true }"
+              required
+            />
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field>
+          <!-- Date input -->
+          <mat-form-field class="example-mid-width">
+            <mat-label>Choose a date</mat-label>
+            <input
+              matInput
+              placeholder="01-01-1999"
+              value="{{ dob }}"
+              [(ngModel)]="this.dob"
+              [ngModelOptions]="{ standalone: true }"
+              required
+            />
+            <mat-icon matSuffix>mode_edit</mat-icon>
+            <mat-hint>MM-DD-YYYY</mat-hint>
+          </mat-form-field>
+          <!-- Address input -->
+          <mat-form-field class="example-full-width">
+            <mat-label>Address</mat-label>
+            <textarea
+              matInput
+              placeholder="Ex. 123 Main St"
+              [(ngModel)]="this.address"
+              [ngModelOptions]="{ standalone: true }"
+              required
+              >{{ address }}</textarea
+            >
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field>
+        </form>
+        <!-- Clear button -->
+        <div class="button-div">
+          <button
+            class="bottom-button"
+            mat-raised-button
+            color="primary"
+            (click)="clearFields()"
+          >
+            Clear
+          </button>
+          <div
+            [matTooltip]="
+              isValidForm() ? '' : 'All fields must be complete before saving.'
+            "
+            [matTooltipDisabled]="isValidForm()"
+          >
+            <!-- Save button -->
+            <button
+              class="bottom-button"
+              mat-raised-button
+              color="primary"
+              (click)="patchInfo()"
+              [disabled]="!isValidForm()"
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Message to show when account information has been updated -->
+      <h3 class="message" *ngIf="showMessage">{{ message }}</h3>
     </div>
 
-    </mat-sidenav>
-    <mat-sidenav-content>
-        <div class="content" mat-elevation-z4>
-            <form class="example-form" *ngIf="showProfileForm">
-                <div class="example-full-width" >
-                <mat-form-field class="id">
-                  <mat-label>ID</mat-label>
-                  <input matInput disabled value="{{id}}">
-                </mat-form-field>
-                </div>
+    <!-- Payment -->
+    <div class="payment" *ngIf="!showProfile">
+      <form class="payment-form">
+        
+          <!-- Try it out using the test card number <b>4242 4242 4242 4242</b>, a
+          random three-digit CVC number, any expiration date in the future, and
+          a random five-digit U.S. ZIP code. -->
+        
 
-                <mat-form-field class="example-mid-width">
-                    <mat-label>Email</mat-label>
-                    <input type="email" matInput placeholder="Email" [formControl]="emailFormControl" [(ngModel)]="email" required>
-                    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                      Please enter a valid email address
-                    </mat-error>
-                    <mat-error *ngIf="emailFormControl.hasError('required')">
-                      Email is <strong>required</strong>
-                    </mat-error>
-                    <mat-icon matSuffix>email</mat-icon>
-                  </mat-form-field>
-
-                  <mat-form-field class="example-mid-width">
-                    <mat-label>Reset password</mat-label>
-                    <input matInput placeholder="Password" value="{{password}}" minlength="4" name="password" [type]="hide ? 'password' : 'text'" [(ngModel)]="password" required [ngModelOptions]="{standalone: true}">
-                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    </button>
-                  </mat-form-field>
-
-                <mat-form-field class="example-mid-width">
-                  <mat-label>First Name</mat-label>
-                  <input matInput placeholder="John" value="{{firstname}}" [(ngModel)]="this.firstname" [ngModelOptions]="{standalone: true}" required>
-                  <mat-icon matSuffix>mode_edit</mat-icon>
-                </mat-form-field>
-
-                <mat-form-field class="example-mid-width">
-                    <mat-label>Last Name</mat-label>
-                    <input matInput placeholder="Doe" value="{{lastname}}" [(ngModel)]="this.lastname" [ngModelOptions]="{standalone: true}" required>
-                    <mat-icon matSuffix>mode_edit</mat-icon>
-                </mat-form-field>
-
-                <mat-form-field class="example-mid-width">
-                    <mat-label>Telephone</mat-label>
-                    <input type="tel" matInput placeholder="555-555-1234" value="{{phone_number}}" [(ngModel)]="this.phone_number" [ngModelOptions]="{standalone: true}" required> 
-                    <mat-icon matSuffix>mode_edit</mat-icon>
-                </mat-form-field>
-
-                <mat-form-field class="example-mid-width">
-                    <mat-label>Choose a date</mat-label>
-                    <input matInput placeholder="01-01-1999" value="{{dob}}" [(ngModel)]="this.dob" [ngModelOptions]="{standalone: true}" required>
-                    <mat-icon matSuffix>mode_edit</mat-icon>
-                    <mat-hint>MM-DD-YYYY</mat-hint>
-                </mat-form-field>
-
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Address</mat-label>
-                    <textarea matInput placeholder="Ex. 123 Main St" [(ngModel)]="this.address" [ngModelOptions]="{standalone: true}" required>{{address}}</textarea>
-                    <mat-icon matSuffix>mode_edit</mat-icon>
-                </mat-form-field>
-            </form>
-            <div class="button-div">
-            <button class="bottom-button" mat-raised-button color="primary" (click)="clearFields()">Clear</button>
-           <div [matTooltip]="isValidForm() ? '' : 'All fields must be complete before saving.'" [matTooltipDisabled]="isValidForm()">
-            <button class="bottom-button" mat-raised-button color="primary" (click)="patchInfo()" [disabled]="!isValidForm()">Save</button>
-            </div>  
-        </div>
-        <h3 class="message" *ngIf="showMessage">{{message}}</h3>
-            
-        </div>
-    </mat-sidenav-content>
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title>Tuition</mat-card-title>
+            <mat-card-subtitle class="warning" #pending>{{ paid }}</mat-card-subtitle>
+          </mat-card-header>
+         
+          <mat-card-content>
+            <div class="row mt-5">
+              <div class="col-md-4">
+                <h2>Current courses:</h2>
+                  <button mat-flat-button *ngFor="let course of coursesByStudentId" class="courses">
+                    <p>{{ course.name }}</p>
+                  </button>
+              </div>
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button class="courses" color="primary" (click)="pay(balance)">
+              Pay ${{ balance }}
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </form>
+    </div>
+  </mat-sidenav-content>
 </mat-sidenav-container>

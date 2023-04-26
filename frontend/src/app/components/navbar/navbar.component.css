@@ -8,6 +8,7 @@
     font-weight: 600;
     z-index: 999;
     margin: 0px;
+    border-bottom: 15px solid #3F51B5;
 }
 
 .spacer {
