@@ -50,6 +50,14 @@ mat-icon {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    margin-top: 5%;
+    justify-content: center;
+}
+
+.example-form-2 {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
@@ -75,8 +83,6 @@ mat-icon {
 
 .id {
     width: 20%;
-    margin-top: 2rem;
-    margin-left: 2%;
 }
 
 .button-div {
@@ -135,8 +141,17 @@ mat-icon {
     justify-content: center;
 }
 
-h2 {
+.courses {
     margin-bottom: 5px;
     margin-top: 10px;
-    ;
+}
+
+hr.rounded {
+    border-top: 1px solid lightgray;
+    border-radius: 5px;
+    width: 50%;
+}
+
+.account {
+    font-weight: bold;
 }
