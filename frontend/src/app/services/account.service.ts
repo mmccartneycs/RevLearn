@@ -13,7 +13,7 @@ export class AccountService {
 
   constructor(private http: HttpClient) { }
 
-  ev = "http://localhost:9000"
+  ev = "http://13.56.165.227:9000"
 
   accInfo: any
   loginEmail: any

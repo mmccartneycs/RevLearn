@@ -14,17 +14,17 @@ export class ForumService {
   getAllForumPostsById(id: number) : Observable<Forum[]> {
     let header : HttpHeaders = new HttpHeaders();
     header = header.append("accept", "application/json");
-    return this.httpClient.get<Forum[]>(`http://localhost:9000/forums/${id}`, { headers : header });
+    return this.httpClient.get<Forum[]>(`http://13.56.165.227:9000/forums/${id}`, { headers : header });
   }
 
   postForumPost(forum: Forum): Observable<any> {
     let header: HttpHeaders = new HttpHeaders();
     header = header.append("Content-Type", "application/json");
-    return this.httpClient.post("http://localhost:9000/forum", forum, { headers: header });
+    return this.httpClient.post("http://13.56.165.227:9000/forum", forum, { headers: header });
   }
   getAllStudentNames() : Observable<Student[]> {
     let header : HttpHeaders = new HttpHeaders();
     header = header.append("accept", "application/json");
-    return this.httpClient.get<Student[]>(`http://localhost:9000/student`, { headers : header });
+    return this.httpClient.get<Student[]>(`http://13.56.165.227:9000/student`, { headers : header });
   }
 }

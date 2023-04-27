@@ -12,7 +12,7 @@ export class CoursesService {
   constructor(private HttpClient : HttpClient) { }
 
   courses : Courses[] = [];
-  ev = "http://localhost:9000";
+  ev = "http://13.56.165.227:9000";
 
   getAllCourses() {
     let header : HttpHeaders = new HttpHeaders();

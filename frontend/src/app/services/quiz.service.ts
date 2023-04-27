@@ -9,7 +9,7 @@ import { Quiz } from '../models/quiz';
 export class QuizService {
   constructor(private httpClient : HttpClient) { }
   
-  ev = "http://localhost:9000"
+  ev = "http://13.56.165.227:9000"
   
   getQuizByCourseId(id : number) {
     let header : HttpHeaders = new HttpHeaders();
